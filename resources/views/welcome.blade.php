@@ -323,7 +323,7 @@
           <li class="list-group-item">2. Pemohon mengajukan permohonan</li>
           <li class="list-group-item">3. Permohonan diverifikasi oleh admin</li>
           <li class="list-group-item">4. Permohonan dikonfirmasi</li>
-          <li class="list-group-item">5. Surat izin diterbitkan</li>
+          <li class="list-group-item">5. SKT diterbitkan</li>
         </ul>
     </div>
     <div class="my-3 p-3 bg-white rounded box-shadow">
