@@ -27,7 +27,7 @@
                 class="form-control @error('email') is-invalid @enderror"
                 id="email"
                 name="email"
-                placeholder="Enter your email"
+                placeholder="Masukan email Anda"
                 autofocus
               />
               @error('email')

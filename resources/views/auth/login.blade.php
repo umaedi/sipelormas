@@ -16,7 +16,7 @@
             </a>
           </div>
           <!-- /Logo -->
-          <h4 class="mb-2">Selmat datang! 👋</h4>
+          <h4 class="mb-2">Selamat datang! 👋</h4>
           <p class="mb-4">Silakan login menggunakan email dan password</p>
 
           <form id="formAuthentication" class="mb-3" action="/login" method="POST">
