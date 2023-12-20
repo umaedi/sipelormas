@@ -14,6 +14,7 @@ class Permohonan extends Model
     protected $keyType = 'string';
     protected $fillable = [
         'user_id',
+        'no_skt',
         'lampiran1',
         'lampiran2',
         'lampiran3',
@@ -36,7 +37,7 @@ class Permohonan extends Model
         'lampiran20',
         'lampiran21',
         'status',
-        'suratizin',
+        'skt',
         'pesan'
     ];
 

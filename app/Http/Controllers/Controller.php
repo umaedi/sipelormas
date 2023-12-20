@@ -20,7 +20,7 @@ class Controller extends BaseController
         ];
 
         if (!is_null($data)) {
-            $response['data'] = $data;
+            $response['metadata'] = $data;
         }
 
         return response()->json($response, $code);

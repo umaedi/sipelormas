@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\PermohonanService;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PermohonanController extends Controller
 {
@@ -64,10 +65,15 @@ class PermohonanController extends Controller
 
     public function update(Request $request, $id)
     {
-        if ($request->status == 'diproses') {
+        if ($request->no_skt) {
+            $request->validate([
+                'no_skt'    => 'string|max:100',
+                'skt'       => 'required|file|mimes:pdf,jpeg,jpg,png,docx|max:2048'
+            ]);
+            $data['no_skt'] = $request->no_skt;
+            $data['skt'] = Storage::putFile('public/dokumen', $request->skt);
+        } elseif ($request->status == 'diproses') {
             $data['status'] = 'diproses';
-            $template_surat_izin = public_path('/template/surat_izin.pdf');
-            Storage::put('public/dokumen/' . $id . '.pdf', file_get_contents($template_surat_izin));
         } else {
             $data['status'] = 'ditolak';
             $data['pesan'] = $request->pesan;

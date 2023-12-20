@@ -14,7 +14,7 @@
           <div class="col-md-6 mb-3">
             <div class="card">
               <div class="card-header">
-                <h4>Status Permohonan Penerbitan Izin Belajar</h4>
+                <h4>Status Permohonan SKT</h4>
             </div>
             <div class="card-body">
               <table class="table">
@@ -30,15 +30,19 @@
                     <td>{{ \Carbon\Carbon::parse($permohonan->created_at)->isoFormat('D MMMM Y') }}</td>
                     @if ($permohonan->status == 'ditolak')
                     <td><span class="badge badge-danger">{{ $permohonan->status }}</span></td>
-                    @else
+                    @elseif($permohonan->status == 'diterima' && $permohonan->skt !='')
                     <td><span class="badge badge-primary">{{ $permohonan->status }}</span></td>
+                    @else
+                    <td><span class="badge badge-primary">diproses</span></td>
                     @endif
                     @if ($permohonan->status == 'dalam antrian')
                     <td><button onclick="return confirm('Permohonan masih dalam antrian')" class="btn btn-info btn-sm">Download</button></td>
                     @elseif($permohonan->status == 'diproses')
                     <td><button onclick="return confirm('Permohonan sedang diproses')" class="btn btn-info btn-sm">Download</button></td>
-                    @elseif($permohonan->status == 'diterima')
-                    <td><a id="btn_download" onclick="download('btn_download', 'btn_download_loading')" href="/user/download/{{ $permohonan->suratizin }}" class="btn btn-info btn-sm">Download</a></td>
+                    @elseif($permohonan->status == 'diterima' && $permohonan->skt !='')
+                    <td><a href="{{ \Illuminate\Support\Facades\Storage::url($permohonan->skt) }}" download="{{ $permohonan->skt }}" class="btn btn-info btn-sm">Download</a></td>
+                    @elseif($permohonan->status == 'diterima' && $permohonan->skt =='')
+                    <td><button onclick="return confirm('Permohonan sedang diproses')" class="btn btn-info btn-sm">Download</button></td>
                     @else
                     <td><button onclick="return confirm('Permohonan ditolak!')" class="btn btn-info btn-sm">Download</button></td>
                     @endif
@@ -62,7 +66,7 @@
           <div class="col-md-6 mb-3">
             <div class="card">
               <div class="card-header">
-                <h4>Lampiran Permohonan Alih Tugas atau Mutasi</h4>
+                <h4>Lampiran Permohonan SKT</h4>
             </div>
             <div class="card-body">
               <table class="table table-responsive">

@@ -341,10 +341,19 @@
           <li class="list-group-item">Alya Zhara: <span class="font-weight-bold"><a href="https://api.whatsapp.com/send?phone=6281532337623" target="_blank">081532337623</a></span></li>
         </ul>
     </div>
-    <div class="my-3 p-3 bg-white rounded box-shadow text-center">
+      <div class="my-3 p-3 bg-white rounded box-shadow text-center">
         <h6>CEK DOKUMEN</h6>
         <img src="{{ asset('img/qrcode.png') }}" alt="">
         <button class="btn btn-primary btn-block" id="scanQR" aria-label="Scan QRCode">SCAN DOKUMEN</button>
+      </div>
+      <div class="my-3 p-3 bg-white rounded box-shadow text-center">
+        <h6>CEK NO SURAT</h6>
+          <input type="text" id="no_skt" class="form-control mb-3" name="no_skt">
+          <button id="btn_cek" class="btn btn-primary btn-block">CEK SURAT</button>
+          <button id="btn_loading" class="btn btn-primary" style="display: none" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+          </button>
       </div>
     </div>
 
@@ -370,6 +379,21 @@
     </div>
   </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="sktModal" tabindex="-1" role="dialog" aria-labelledby="sktModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sktModalLabel">Status SKT</h5>
+      </div>
+      <div class="modal-body" id="response">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
 </div>
 </main>
 @endsection
@@ -440,5 +464,53 @@
                 setTimeout(scan, 300);
             }
         }
+
+        //cek no surat
+        $('#btn_cek').click(function(){
+          var no_skt = $('#no_skt').val();
+          $('#btn_cek').hide();
+          $('#btn_loading').show();
+          $.ajax({
+                type: 'GET',
+                url: '/user/cek_no_skt/'+ no_skt,
+                dataType: 'json',
+                success: function(data) {
+                  $('#btn_loading').hide();
+                  $('#btn_cek').show();
+                  if (data.metadata) {
+                    var html = 
+                    `
+                    <div class="form-group mb-2">
+                      <label for="">No SKT</label>
+                      <input type="text" value="${data.metadata.no_skt}" class="form-control" disabled>
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="">Status</label>
+                      <textarea type="text" rows="3" class="form-control" disabled>${data.metadata.pesan}</textarea>
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="">Lampiran SKT</label>
+                      <a href="{{ \Illuminate\Support\Facades\Storage::url('${data.metadata.skt}') }}" class="form-control btn btn-primary">Lihat lampiran</a>
+                    </div>
+                    `;
+                    $('#response').html(html);
+                    $('#sktModal').modal('show');
+                  }
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                  $('#btn_loading').hide();
+                  $('#btn_cek').show();
+                  var html = 
+                    `
+                    <picture>
+                      <source srcset="{{ asset('img/not_found.jpg') }}" type="image/svg+xml">
+                      <img src="{{ asset('img/not_found.jpg') }}" class="img-fluid img-thumbnail" alt="...">
+                    </picture>
+                    `;
+                  $('#response').html(html);
+                  $('#sktModal').modal('show');
+                }
+            });
+        });
     </script>
 @endpush

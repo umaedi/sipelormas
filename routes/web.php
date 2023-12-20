@@ -22,9 +22,10 @@ Route::get('/redirect', function () {
 });
 
 Route::get('/', function () {
-    // $qrcode = QrCode::size(400)->generate('https://sipelormas.tulangbawangkab.go.id');
     return view('welcome');
 });
+
+Route::get('/user/cek_no_skt/{id}', CeknomorController::class);
 
 //route for users
 Route::middleware('auth')->prefix('user')->group(function () {

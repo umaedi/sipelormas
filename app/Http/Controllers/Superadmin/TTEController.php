@@ -20,7 +20,6 @@ class TTEController extends Controller
     {
         if (Hash::check($request->password, Auth::user()->password)) {
             $data['status'] = 'diterima';
-            $data['suratizin'] = $id;
             try {
                 $this->permohonan->update($id, $data);
             } catch (\Throwable $th) {
@@ -35,12 +34,11 @@ class TTEController extends Controller
     public function reject(Request $request, $id)
     {
         $data['status'] = 'ditolak';
-        $data['suratizin'] = '';
         try {
             $this->permohonan->update($id, $data);
         } catch (\Throwable $th) {
             return $this->error($th->getMessage());
         }
-        return $this->success('Dokumen berhasil di TTE');
+        return $this->success('Dokumen berhasil di tolak!');
     }
 }

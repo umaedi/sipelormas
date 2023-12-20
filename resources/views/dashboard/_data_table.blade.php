@@ -14,8 +14,10 @@
                 <td>{{ \Carbon\Carbon::parse($tb->created_at)->isoFormat('D MMMM Y') }}</td>
                 @if ($tb->status == 'ditolak')
                 <td><span class="badge badge-danger">{{ $tb->status }}</span></td>
-                @else
+                @elseif($tb->status == 'diterima' && $tb->skt != '')
                 <td><span class="badge badge-primary">{{ $tb->status }}</span></td>
+                @else
+                <td><span class="badge badge-primary">diproses</span></td>
                 @endif
                 <td><a href="/user/permohonan_skt/show/{{ $tb->id }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a></td>
             </tr>

@@ -65,14 +65,25 @@
                 <div class="card-body">
                   <textarea class="form-control">{{ $permohonan->pesan }}</textarea>
                 </div>
+                @elseif($permohonan->pesan && $permohonan->status == 'ditolak')
+                <div class="alert alert-warning">Permohonan ini ditolak dengan alasan:</div>
+                <div class="card-body">
+                  <textarea class="form-control">{{ $permohonan->pesan }}</textarea>
+                </div>
                 @endif
             </div>
             <div class="card mb-3">
                 @if ($permohonan->status == 'diproses')
                 <div class="alert alert-primary">Permohonan ini telah diverifikasi & sedang menunggu untuk di TTE</div>
                 @endif
+                @if ($permohonan->status == 'diterima')
+                <div class="alert alert-primary">Permohonan ini telah di TTE. {{ $permohonan->skt ? 'Anda dapat mengunduh SKT dibawah ini' : 'Silakan unggah SKT'}}</div>
+                @endif
+                @if (session('msg_success'))
+                <div class="alert alert-primary">{{ session('msg_success') }}</div>
+                @endif
                 <div class="card-header">
-                  <h4>Informasi Status Permohonan Penerbitan Izin Belajar</h4>
+                  <h4>Informasi Status Permohonan SKT</h4>
               </div>
               <div class="card-body">
                 <table class="table table-bordered">
@@ -80,26 +91,31 @@
                     <tr>
                         <th scope="col">Tgl Pengajuan</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Surat izin</th>
+                        <th scope="col">SKT</th>
                     </tr>
                 </thead>
                   <tbody>
                     @if ($permohonan->status == 'dalam antrian')
                       <td>{{ \Carbon\Carbon::parse($permohonan->created_at)->isoFormat('D MMMM Y') }}</td>
                       <td><span class="badge badge-warning">Perlu Diproses</span></td>
-                      <td><button class="btn btn-info btn-sm" onclick="return confirm('Permohonan perlu diproses')">Download</button></td>
+                      <td><button class="btn btn-info btn-sm" onclick="return confirm('Permohonan perlu diproses')">X</button></td>
                     @elseif($permohonan->status == 'diproses')
                       <td>{{ \Carbon\Carbon::parse($permohonan->created_at)->isoFormat('D MMMM Y') }}</td>
                       <td><span class="badge badge-success">Diproses</span></td>
-                      <td><button class="btn btn-info btn-sm" onclick="return confirm('Permohonan sedang diproses!')">Download</button></td>
+                      <td><button class="btn btn-info btn-sm" onclick="return confirm('Permohonan sedang diproses!')">X</button></td>
                       @elseif($permohonan->status == 'diterima')
                       <td>{{ \Carbon\Carbon::parse($permohonan->created_at)->isoFormat('D MMMM Y') }}</td>
                       <td><span class="badge badge-success">Diterima</span></td>
-                      <td><a href="{{ \Illuminate\Support\Facades\Storage::url($permohonan->suratizin) }}" target="_blank"><span class="btn btn-info btn-sm">Download</span></a></td>
+                      <td>
+                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#approve">Unggah SKT</button>
+                        @if (isset($permohonan->skt))
+                        <a href="{{ \Illuminate\Support\Facades\Storage::url($permohonan->skt) }}" download="{{ $permohonan->skt }}" class="btn btn-info btn-sm">Unduh SKT</a>
+                        @endif
+                      </td>
                     @else
                       <td>{{ \Carbon\Carbon::parse($permohonan->created_at)->isoFormat('D MMMM Y') }}</td>
                       <td><span class="badge badge-danger">Ditolak</span></td>
-                      <td><button class="btn btn-info btn-sm" onclick="return confirm('Permohonan ditolak!')">Download</button></td>
+                      <td><button class="btn btn-info btn-sm" onclick="return confirm('Permohonan ditolak!')">x</button></td>
                     @endif
                   </tbody>
                 </table>
@@ -107,7 +123,7 @@
             </div>
             <div class="card">
               <div class="card-header">
-                <h4>Lampiran Permohonan Alih Tugas atau Mutasi</h4>
+                <h4>Lampiran Permohonan SKT</h4>
             </div>
             <div class="card-body">
               <table class="table table-responsive">
@@ -252,5 +268,33 @@
     </form>  
   </div>
 </div>
+<div class="modal fade" id="approve" tabindex="-1" role="dialog" aria-labelledby="approveTitle" aria-hidden="true">
+  <form action="/admin/permohonan/update/{{ $permohonan->id }}" method="POST" enctype="multipart/form-data">
+    @method('PUT')
+    @csrf
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="approveLongTitle">Unggah SKT</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">NO SKT</label>
+            <input type="text" name="no_skt" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="">Lampiran SKT</label>
+            <input type="file" name="skt" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">BATAL</button>
+          <button type="submit" class="btn btn-primary">UNGGAH</button>
+        </div>
+      </div>
+  </form>  
 </div>
 @endsection

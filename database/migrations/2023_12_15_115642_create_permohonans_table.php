@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('permohonans', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignId('user_id');
+            $table->string('no_skt')->nullable();
             $table->string('lampiran1');
             $table->string('lampiran2');
             $table->string('lampiran3');
@@ -38,7 +39,7 @@ return new class extends Migration
             $table->string('lampiran20')->nullable();
             $table->string('lampiran21')->nullable();
             $table->enum('status', array('dalam antrian', 'diproses', 'diterima', 'ditolak'))->default('dalam antrian');
-            $table->string('suratizin')->nullable();
+            $table->string('skt')->nullable();
             $table->string('pesan')->nullable();
             $table->timestamps();
             $table->softDeletes();
