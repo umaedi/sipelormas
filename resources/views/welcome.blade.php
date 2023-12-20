@@ -347,9 +347,9 @@
         <button class="btn btn-primary btn-block" id="scanQR" aria-label="Scan QRCode">SCAN DOKUMEN</button>
       </div>
       <div class="my-3 p-3 bg-white rounded box-shadow text-center">
-        <h6>CEK NO SURAT</h6>
-          <input type="text" id="no_skt" class="form-control mb-3" name="no_skt">
-          <button id="btn_cek" class="btn btn-primary btn-block">CEK SURAT</button>
+        <h6>CEK NO SKT</h6>
+          <input type="text" id="no_skt" class="form-control mb-3" name="no_skt" required>
+          <button id="btn_cek" class="btn btn-primary btn-block">CEK SKT</button>
           <button id="btn_loading" class="btn btn-primary" style="display: none" type="button" disabled>
             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             Loading...
