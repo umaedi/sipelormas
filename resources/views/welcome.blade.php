@@ -11,7 +11,7 @@
       <div class="my-3 p-3 bg-white rounded box-shadow">
         <div class="border-bottom border-gray pb-2 mb-3">
           <h6 class="">Persyaratan SKT/ORMAS</h6>
-          <p class="text-small text-muted">Sesuai Undang-Undang No. 17 Tahun 2013 dan PP No. 58 tahun 2016 tentang pelaksanaan UU No.17 Tahun 2013, serta Permendagri No. 57 Tahun 2017 dan PERBUB No 66 Tahun 2011</p>
+          <p class="text-small text-muted">Sesuai Undang-Undang No. 17 Tahun 2013 dan PP No. 58 tahun 2016 tentang pelaksanaan UU No.17 Tahun 2013, serta Permendagri No. 57 Tahun 2017 dan PERBUB No 66 Tahun 2011, Permendagri NO 77 Tahun 2020, PERBUB NO 38 Tahun 2020</p>
         </div>
         <div id="accordion">
            <div class="card mb-3">
