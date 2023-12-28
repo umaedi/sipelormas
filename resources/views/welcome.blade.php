@@ -301,7 +301,7 @@
              <div class="card-header" id="lampiran_21">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran21" aria-expanded="false" aria-controls="lampiran21">
-                  Lampiran 21 (Opsional, fomat pdf, maksimal 2MB)
+                  Lampiran 21 (Wajib diisi, fomat pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
