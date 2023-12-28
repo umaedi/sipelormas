@@ -12,6 +12,15 @@
       <div class="section-body">
         <div class="row">
           <div class="col-md-12 mb-3">
+            <div class="alert alert-warning" role="alert">
+              <h4 class="alert-heading">Penting!</h4>
+              <ol>
+                <li>Lampiran 1-17 wajib diisi (18-21 opsional)</li>
+                <li>Sesuaikan format lampiran dengan format yang diminta (PDF, PNG, JPEG, JPG)</li>
+                <li>Maksimal ukuran file 2 MB</li>
+                <li>Pastikan jaringan atau sinyal memadai</li>
+              </ol>
+            </div>
             <div class="card">
               <div class="card-header">
                 <h4>Formulir Permohonan SKT/ORMAS</h4>
@@ -42,7 +51,7 @@
                       @enderror
                     </div>
                     <div class="form-group">
-                      <label for="lampiran4">Cek dan scan Kemenkumham / Kemendagri</label>
+                      <label for="lampiran4">Lampiran yang berisi tentang Pengesahan Pendirian Badan Hukum dari Kemenkumham/Kemendagri (pastikan bagian qrcode jelas dan tidak terpotong)</label>
                       <input type="file" class="file-input form-control @error('lampiran4') is-invalid @enderror" id="lampiran4" name="lampiran4">
                       @error('lampiran4')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -56,7 +65,7 @@
                       @enderror
                     </div>
                     <div class="form-group">
-                      <label for="lampiran6">  Susunan pengurus yang dibuktikan dengan surat keputusan tentang susunan pengurus Ormas secara lengkap yang sah sesuai dengan AD/ART ormas yang memuat paling sedikit ketua sekretaris dan bendahara atau sebutan lain dan pengurus dan anggota kesemuannya berkewarganegaraan tanpa  terkecuali;</label>
+                      <label for="lampiran6">Susunan pengurus yang dibuktikan dengan surat keputusan tentang susunan pengurus Ormas secara lengkap yang sah sesuai dengan AD/ART ormas yang memuat paling sedikit ketua sekretaris dan bendahara atau sebutan lain dan pengurus dan anggota kesemuannya berkewarganegaraan tanpa  terkecuali;</label>
                       <input type="file" class="file-input form-control @error('lampiran6') is-invalid @enderror" id="lampiran1" name="lampiran6">
                       @error('lampiran6')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -71,7 +80,7 @@
                     </div>
                     <div class="form-group">
                       <label for="lampiran8">Pas foto pengurus organisasi berwarna  ukuran 4 x 6 terbaru  dalam tiga bulan terakhir
-                        ( ketua, sekretaris, bendahara atau sebutan lainnya)</label>
+                        ( ketua, sekretaris, bendahara atau sebutan lainnya, format jpeg, jpg, png, maksimal 2MB) </label>
                       <input type="file" class="file-input form-control @error('lampiran8') is-invalid @enderror" id="lampiran1" name="lampiran8">
                       @error('lampiran8')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -106,7 +115,7 @@
                       @enderror
                     </div>
                     <div class="form-group">
-                      <label for="lampiran13">Foto kantor atau sekretariat ormas, tampak depan yang memuat papan nama</label>
+                      <label for="lampiran13">Foto kantor atau sekretariat ormas, tampak depan yang memuat papan nama, format jpeg, jpg, png, maksimal 2MB</label>
                       <input type="file" class="file-input form-control @error('lampiran13') is-invalid @enderror" id="lampiran1" name="lampiran13">
                       @error('lampiran13')
                         <div class="invalid-feedback">{{ $message }}</div>

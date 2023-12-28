@@ -49,7 +49,7 @@ class PermohonansktController extends Controller
             'lampiran10' => 'required|file|mimes:pdf|max:2048',
             'lampiran11' => 'required|file|mimes:pdf|max:2048',
             'lampiran12' => 'required|file|mimes:pdf|max:2048',
-            'lampiran13' => 'required|file|mimes:pdf|max:2048',
+            'lampiran13' => 'required|file|mimes:pdf,jpeg,jpg,png|max:2048',
             'lampiran14' => 'required|file|mimes:pdf|max:2048',
             'lampiran15' => 'required|file|mimes:pdf|max:2048',
             'lampiran16' => 'required|file|mimes:pdf|max:2048',

@@ -9,7 +9,10 @@
           </div>
           <div class="row">
             <div class="col">
-                <div class="alert alert-primary">PERMOHONAN SKT/ORMAS</div>
+              <div class="alert alert-primary" role="alert">
+                <h4 class="alert-heading">Selamat datang {{ auth()->user()->nama }}👋</h4>
+                <p>Ini adalah dashboard dimana Anda bisa mengelola semua permohonan SKT yang diajukan melalui sistem SIPELORMAS. <br> Semoga hari Anda menyenangkan😊</p>
+              </div>
             </div>
           </div>
           <div class="row mb-3">

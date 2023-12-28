@@ -57,6 +57,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     //route for user
     Route::get('/users', [Admin\UserController::class, 'index']);
     Route::get('/user/show/{id}', [Admin\UserController::class, 'show']);
+
+    Route::get('/profile', Admin\ProfileController::class);
 });
 
 Route::middleware(['auth', 'super_admin'])->prefix('super_admin')->group(function () {

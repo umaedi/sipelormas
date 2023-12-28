@@ -18,7 +18,7 @@
              <div class="card-header" id="lampiran_1">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran1" aria-expanded="false" aria-controls="lampiran1">
-                  Lampiran 1 (wajib diisi, format pdf)
+                  Lampiran 1 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -32,7 +32,7 @@
              <div class="card-header" id="lampiran_2">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran2" aria-expanded="false" aria-controls="lampiran2">
-                  Lampiran 2 (wajib diisi, format pdf)
+                  Lampiran 2 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -47,7 +47,7 @@
              <div class="card-header" id="lampiran_3">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran3" aria-expanded="false" aria-controls="lampiran3">
-                  Lampiran 3 (wajib diisi, format pdf)
+                  Lampiran 3 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -61,7 +61,7 @@
              <div class="card-header" id="lampiran_4">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran4" aria-expanded="false" aria-controls="lampiran4">
-                  Lampiran 4 (wajib diisi, format pdf)
+                  Lampiran 4 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -76,7 +76,7 @@
              <div class="card-header" id="lampiran_5">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran5" aria-expanded="false" aria-controls="lampiran5">
-                  Lampiran 5 (wajib diisi, format pdf)
+                  Lampiran 5 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -90,7 +90,7 @@
              <div class="card-header" id="lampiran_6">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran6" aria-expanded="false" aria-controls="lampiran6">
-                  Lampiran 6 (wajib diisi, format pdf)
+                  Lampiran 6 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -104,7 +104,7 @@
              <div class="card-header" id="lampiran_7">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran7" aria-expanded="false" aria-controls="lampiran7">
-                  Lampiran 7 (wajib diisi, format pdf)
+                  Lampiran 7 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -118,7 +118,7 @@
              <div class="card-header" id="lampiran_8">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran8" aria-expanded="false" aria-controls="lampiran8">
-                  Lampiran 8 (wajib diisi, format jpeg, jpg, png)
+                  Lampiran 8 (wajib diisi, format jpeg, jpg, png, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -133,7 +133,7 @@
              <div class="card-header" id="lampiran_9">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran9" aria-expanded="false" aria-controls="lampiran9">
-                  Lampiran 9 (wajib diisi, format pdf)
+                  Lampiran 9 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -147,7 +147,7 @@
              <div class="card-header" id="lampiran_10">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran10" aria-expanded="false" aria-controls="lampiran10">
-                  Lampiran 10 (wajib diisi, format pdf)
+                  Lampiran 10 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -161,7 +161,7 @@
              <div class="card-header" id="lampiran_11">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran11" aria-expanded="false" aria-controls="lampiran11">
-                  Lampiran 11 (wajib diisi, format pdf)
+                  Lampiran 11 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -175,7 +175,7 @@
              <div class="card-header" id="lampiran_12">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran12" aria-expanded="false" aria-controls="lampiran12">
-                  Lampiran 12 (wajib diisi, format pdf)
+                  Lampiran 12 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -189,7 +189,7 @@
              <div class="card-header" id="lampiran_13">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran13" aria-expanded="false" aria-controls="lampiran13">
-                  Lampiran 13 (wajib diisi, format pdf)
+                  Lampiran 13 (wajib diisi, format jpeg, jpg, png, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -203,7 +203,7 @@
              <div class="card-header" id="lampiran_14">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran14" aria-expanded="false" aria-controls="lampiran14">
-                  Lampiran 14 (wajib diisi, format pdf)
+                  Lampiran 14 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -217,7 +217,7 @@
              <div class="card-header" id="lampiran_15">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran15" aria-expanded="false" aria-controls="lampiran15">
-                  Lampiran 15 (wajib diisi, format pdf)
+                  Lampiran 15 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -231,7 +231,7 @@
              <div class="card-header" id="lampiran_16">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran16" aria-expanded="false" aria-controls="lampiran16">
-                  Lampiran 16 (wajib diisi, format pdf)
+                  Lampiran 16 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -245,7 +245,7 @@
              <div class="card-header" id="lampiran_17">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran17" aria-expanded="false" aria-controls="lampiran17">
-                  Lampiran 17 (wajib diisi, format pdf)
+                  Lampiran 17 (wajib diisi, format pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -259,7 +259,7 @@
              <div class="card-header" id="lampiran_18">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran18" aria-expanded="false" aria-controls="lampiran18">
-                  Lampiran 18 (Opsional, fomat pdf)
+                  Lampiran 18 (Opsional, fomat pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -273,7 +273,7 @@
              <div class="card-header" id="lampiran_19">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran19" aria-expanded="false" aria-controls="lampiran19">
-                  Lampiran 19 (Opsional, fomat pdf)
+                  Lampiran 19 (Opsional, fomat pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -287,7 +287,7 @@
              <div class="card-header" id="lampiran_20">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran20" aria-expanded="false" aria-controls="lampiran20">
-                  Lampiran 20 (Opsional, fomat pdf)
+                  Lampiran 20 (Opsional, fomat pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -301,7 +301,7 @@
              <div class="card-header" id="lampiran_21">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran21" aria-expanded="false" aria-controls="lampiran21">
-                  Lampiran 21 (Opsional, fomat pdf)
+                  Lampiran 21 (Opsional, fomat pdf, maksimal 2MB)
                  </button>
                </h5>
              </div>
@@ -506,6 +506,7 @@
                       <source srcset="{{ asset('img/not_found.jpg') }}" type="image/svg+xml">
                       <img src="{{ asset('img/not_found.jpg') }}" class="img-fluid img-thumbnail" alt="...">
                     </picture>
+                    <div class=text-center>Mohon maaf no SKT yang Anda masukan tidak ditemukan di database kami</div>
                     `;
                   $('#response').html(html);
                   $('#sktModal').modal('show');
