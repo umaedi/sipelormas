@@ -35,7 +35,7 @@
             <h5 class="modal-title" id="disclaimerTitle">Disclaimer</h5>
           </div>
           <div class="modal-body">
-            <p>Aplikasi ini bukan untuk pendaftaran pendirian badan hukum perkumpulan masyarakat, melainkan sebagai validasi keberadaan ORMAS yang berada di Kabupaten Tulang Bawang</p>
+            <p>Aplikasi ini bukan untuk pendaftaran pendirian badan hukum perkumpulan masyarakat, melainkan sebagai pendataan keberadaan ORMAS yang berdomisili di Kabupaten Tulang Bawang</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
