@@ -18,7 +18,7 @@
              <div class="card-header" id="lampiran_1">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran1" aria-expanded="false" aria-controls="lampiran1">
-                  Lampiran 1 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 1 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -32,7 +32,7 @@
              <div class="card-header" id="lampiran_2">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran2" aria-expanded="false" aria-controls="lampiran2">
-                  Lampiran 2 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 2 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -47,7 +47,7 @@
              <div class="card-header" id="lampiran_3">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran3" aria-expanded="false" aria-controls="lampiran3">
-                  Lampiran 3 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 3 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -61,7 +61,7 @@
              <div class="card-header" id="lampiran_4">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran4" aria-expanded="false" aria-controls="lampiran4">
-                  Lampiran 4 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 4 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -76,7 +76,7 @@
              <div class="card-header" id="lampiran_5">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran5" aria-expanded="false" aria-controls="lampiran5">
-                  Lampiran 5 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 5 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -90,7 +90,7 @@
              <div class="card-header" id="lampiran_6">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran6" aria-expanded="false" aria-controls="lampiran6">
-                  Lampiran 6 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 6 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -104,7 +104,7 @@
              <div class="card-header" id="lampiran_7">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran7" aria-expanded="false" aria-controls="lampiran7">
-                  Lampiran 7 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 7 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -118,7 +118,7 @@
              <div class="card-header" id="lampiran_8">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran8" aria-expanded="false" aria-controls="lampiran8">
-                  Lampiran 8 (wajib diisi, format jpeg, jpg, png, maksimal 2MB)
+                  Lampiran 8 (wajib diisi, format jpeg, jpg, png)
                  </button>
                </h5>
              </div>
@@ -133,7 +133,7 @@
              <div class="card-header" id="lampiran_9">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran9" aria-expanded="false" aria-controls="lampiran9">
-                  Lampiran 9 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 9 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -147,7 +147,7 @@
              <div class="card-header" id="lampiran_10">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran10" aria-expanded="false" aria-controls="lampiran10">
-                  Lampiran 10 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 10 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -161,7 +161,7 @@
              <div class="card-header" id="lampiran_11">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran11" aria-expanded="false" aria-controls="lampiran11">
-                  Lampiran 11 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 11 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -175,7 +175,7 @@
              <div class="card-header" id="lampiran_12">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran12" aria-expanded="false" aria-controls="lampiran12">
-                  Lampiran 12 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 12 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -189,7 +189,7 @@
              <div class="card-header" id="lampiran_13">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran13" aria-expanded="false" aria-controls="lampiran13">
-                  Lampiran 13 (wajib diisi, format jpeg, jpg, png, maksimal 2MB)
+                  Lampiran 13 (wajib diisi, format jpeg, jpg, png,)
                  </button>
                </h5>
              </div>
@@ -203,7 +203,7 @@
              <div class="card-header" id="lampiran_14">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran14" aria-expanded="false" aria-controls="lampiran14">
-                  Lampiran 14 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 14 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -217,7 +217,7 @@
              <div class="card-header" id="lampiran_15">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran15" aria-expanded="false" aria-controls="lampiran15">
-                  Lampiran 15 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 15 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -231,7 +231,7 @@
              <div class="card-header" id="lampiran_16">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran16" aria-expanded="false" aria-controls="lampiran16">
-                  Lampiran 16 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 16 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -245,7 +245,7 @@
              <div class="card-header" id="lampiran_17">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran17" aria-expanded="false" aria-controls="lampiran17">
-                  Lampiran 17 (wajib diisi, format pdf, maksimal 2MB)
+                  Lampiran 17 (wajib diisi, format pdf)
                  </button>
                </h5>
              </div>
@@ -259,7 +259,7 @@
              <div class="card-header" id="lampiran_18">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran18" aria-expanded="false" aria-controls="lampiran18">
-                  Lampiran 18 (Opsional, fomat pdf, maksimal 2MB)
+                  Lampiran 18 (Opsional, fomat pdf)
                  </button>
                </h5>
              </div>
@@ -273,7 +273,7 @@
              <div class="card-header" id="lampiran_19">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran19" aria-expanded="false" aria-controls="lampiran19">
-                  Lampiran 19 (Opsional, fomat pdf, maksimal 2MB)
+                  Lampiran 19 (Opsional, fomat pdf)
                  </button>
                </h5>
              </div>
@@ -287,7 +287,7 @@
              <div class="card-header" id="lampiran_20">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran20" aria-expanded="false" aria-controls="lampiran20">
-                  Lampiran 20 (Opsional, fomat pdf, maksimal 2MB)
+                  Lampiran 20 (Opsional, fomat pdf)
                  </button>
                </h5>
              </div>
@@ -301,7 +301,7 @@
              <div class="card-header" id="lampiran_21">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran21" aria-expanded="false" aria-controls="lampiran21">
-                  Lampiran 21 (Wajib diisi, fomat pdf, maksimal 2MB)
+                  Lampiran 21 (Wajib diisi, fomat pdf)
                  </button>
                </h5>
              </div>
@@ -339,6 +339,7 @@
         <h6>KONTAK KAMI</h6>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Alya Zhara: <span class="font-weight-bold"><a href="https://api.whatsapp.com/send?phone=6281532337623" target="_blank">081532337623</a></span></li>
+          <li class="list-group-item">Alya Zhara: <span class="font-weight-bold"><a href="https://api.whatsapp.com/send?phone=6281532337623" target="_blank">081532337623</a></span></li>
         </ul>
     </div>
       <div class="my-3 p-3 bg-white rounded box-shadow text-center">
@@ -356,7 +357,6 @@
           </button>
       </div>
     </div>
-
   <!-- Modal -->
 <div class="modal fade" id="modal-full-width" tabindex="-1" role="dialog" aria-labelledby="modal-full-widthTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
