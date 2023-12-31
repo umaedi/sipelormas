@@ -6,7 +6,8 @@
         <h1>Permohonan</h1>
         <div class="section-header-breadcrumb">
           <div class="breadcrumb-item active"><a href="/user/dashboard">Dashboard</a></div>
-          <div class="breadcrumb-item">Permohonan</div>
+          <div class="breadcrumb-item active"><a href="/user/permohonan_skt">Permohonan</a></div>
+          <div class="breadcrumb-item">Detail Permohonan</div>
         </div>
       </div>
       <div class="section-body">
@@ -33,7 +34,7 @@
                     @elseif($permohonan->status == 'diterima' && $permohonan->skt !='')
                     <td><span class="badge badge-primary">{{ $permohonan->status }}</span></td>
                     @else
-                    <td><span class="badge badge-primary">diproses</span></td>
+                    <td><span class="badge badge-primary">{{ $permohonan->status }}</span></td>
                     @endif
                     @if ($permohonan->status == 'dalam antrian')
                     <td><button onclick="return confirm('Permohonan masih dalam antrian')" class="btn btn-info btn-sm">Download</button></td>
@@ -110,7 +111,7 @@
                   </tr>
                   <tr>
                     <th>10</th>
-                    <td><a href="{{ \Illuminate\Support\Facades\Storage::url($permohonan->lampiran10) }}" target="_blank"> Nomor wajib pajak atas nama ormas</a></td>
+                    <td>Nomor Wajib Pajak: {{ $permohonan->lampiran10 }}</td>
                   </tr>
                   <tr>
                     <th>11</th>

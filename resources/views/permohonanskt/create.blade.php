@@ -23,7 +23,7 @@
             </div>
             <div class="card">
               <div class="card-header">
-                <h4>Formulir Permohonan SKT/ORMAS</h4>
+                <h4>Formulir Permohonan SKT</h4>
             </div>
             <div class="card-body">
                 <form id="form_skt">
@@ -95,7 +95,7 @@
                     </div>
                     <div class="form-group">
                       <label for="lampiran10"> Nomor wajib pajak atas nama ormas</label>
-                      <input type="file" class="file-input form-control @error('lampiran10') is-invalid @enderror" id="lampiran1" name="lampiran10">
+                      <input type="text" class="file-input form-control @error('lampiran10') is-invalid @enderror" id="lampiran1" name="lampiran10" placeholder="Ketikan disini">
                       @error('lampiran10')
                         <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
@@ -150,7 +150,10 @@
                       @enderror
                     </div>
                     <div class="form-group">
-                      <label for="lampiran18">Surat  pernyataan bahwa nama, lambang, bendera, tanda gamba, simbol, atribut, dan cap stempel yang digunakan belum menjadi hak paten dan/atau hak cipta pihak dan serta  bukan  merupakan  milik  pemerintah,  yang  ditandatangani  oleh  ketua  dan sekretaris.</label>
+                      <label for="lampiran18">
+                        Surat  persetujuan kesediaan atau persetujuan dari pejabat negara, pejabat pemerintah dan atau tokohnya masyarakat yang bersangkutan, yang namanya dicantumkan kepengurusan ormas
+
+                     </label>
                       <input type="file" class="file-input form-control @error('lampiran18') is-invalid @enderror" id="lampiran1" name="lampiran18">
                       @error('lampiran18')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -171,7 +174,7 @@
                       @enderror
                     </div>
                     <div class="form-group">
-                      <label for="lampiran21">Surat  persetujuan kesediaan atau persetujuan dari pejabat negara, pejabat pemerintah dan atau tokohnya masyarakat yang bersangkutan, yang namanya dicantumkan kepengurusan ormas</label>
+                      <label for="lampiran21">Surat  pernyataan bahwa nama, lambang, bendera, tanda gamba, simbol, atribut, dan cap stempel yang digunakan belum menjadi hak paten dan/atau hak cipta pihak dan serta  bukan  merupakan  milik  pemerintah,  yang  ditandatangani  oleh  ketua  dan sekretaris.</label>
                       <input type="file" class="file-input form-control @error('lampiran21') is-invalid @enderror" id="lampiran1" name="lampiran21">
                       @error('lampiran21')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -210,8 +213,9 @@ $('#form_skt').submit(async function uploadFile(e) {
     loading(true);
     await transAjax(param).then((result) => {
       loading(false);
-      swal({text: result.data, icon: 'success', timer: 3000,}).then(() => {
-          window.location.href = '/user/dashboard';
+      console.log(result);
+      swal({text: result.message, icon: 'success', timer: 3000,}).then(() => {
+          window.location.href = '/user/permohonan_skt';
       });
     }).catch((error) => {
         loading(false);

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 Route::get('test', fn () => phpinfo());
 Route::get('/redirect', function () {
@@ -33,12 +32,17 @@ Route::middleware('auth')->prefix('user')->group(function () {
     Route::get('/profile', ProfileController::class);
     Route::get('/dashboard', DashboardController::class);
 
+    Route::get('/permohonan_skt', [PermohonansktController::class, 'index']);
     Route::get('/permohonan_skt/create', [PermohonansktController::class, 'create']);
     Route::post('/permohonan_skt/store', [PermohonansktController::class, 'store']);
     Route::get('/permohonan_skt/show/{id}', [PermohonansktController::class, 'show']);
     Route::get('/permohonan_skt/edit/{id}', [PermohonansktController::class, 'edit']);
     Route::put('/permohonan_skt/update/{id}', [PermohonansktController::class, 'update']);
     Route::delete('/permohonan_skt/destroy/{id}', [PermohonansktController::class, 'destroy']);
+
+    Route::get('/hibah', [HibahController::class, 'index']);
+    Route::get('/hibah/create', [HibahController::class, 'create']);
+    Route::post('/hibah/store', [HibahController::class, 'store']);
 
     Route::get('/download/{id}', DownloadController::class);
 });

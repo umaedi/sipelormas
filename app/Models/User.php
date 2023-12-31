@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Permohonan::class);
     }
+
+    protected function hibah()
+    {
+        return $this->hasMany(Hibah::class);
+    }
 }

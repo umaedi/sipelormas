@@ -8,7 +8,6 @@ use App\Services\PermohonanService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PermohonansktController extends Controller
 {
@@ -17,9 +16,21 @@ class PermohonansktController extends Controller
     {
         $this->permohonan = $permohonanService;
     }
+
+    public function index()
+    {
+        if (request()->ajax()) {
+            $data['table'] = $this->permohonan->Query()->where('user_id', Auth::user()->id)->get();
+            return view('permohonanskt._data_table', $data);
+        }
+
+        $data['title'] = 'Permohonan SKT/ORMAS';
+        $data['permohonan'] = $this->permohonan->Query()->where('user_id', Auth::user()->id)->count();
+        return view('permohonanskt.index', $data);
+    }
+
     public function create()
     {
-
 
         $data['title'] = 'Permohonan SKT/ORMAS';
         return view('permohonanskt.create', $data);
@@ -34,6 +45,11 @@ class PermohonansktController extends Controller
 
     public function store(Request $request)
     {
+        $cek_permohonan = $this->permohonan->Query()->where('user_id', Auth::user()->id)->count();
+        if ($cek_permohonan === 1) {
+            return $this->error('Internal Server Error!');
+        }
+
         $data = \request()->except('_token');
         $data['user_id'] = Auth::user()->id;
         $validator = Validator::make(\request()->all(), [
@@ -46,7 +62,7 @@ class PermohonansktController extends Controller
             'lampiran7' => 'required|file|mimes:pdf|max:2048',
             'lampiran8' => 'required|file|mimes:pdf,jpeg,jpg,png|max:2048',
             'lampiran9' => 'required|file|mimes:pdf|max:2048',
-            'lampiran10' => 'required|file|mimes:pdf|max:2048',
+            'lampiran10' => 'required|string|unique:permohonans|max:20',
             'lampiran11' => 'required|file|mimes:pdf|max:2048',
             'lampiran12' => 'required|file|mimes:pdf|max:2048',
             'lampiran13' => 'required|file|mimes:pdf,jpeg,jpg,png|max:2048',
@@ -63,91 +79,91 @@ class PermohonansktController extends Controller
         $randomName = Str::random(16);
 
         $lampiran1 = $request->file('lampiran1');
-        $newLampiran1 = Str::replace('', '_',  strtolower(auth()->user()->nama . '_lampiran1_' . $randomName . '.' . $lampiran1->getClientOriginalExtension()));
+        $newLampiran1 = Str::replace(' ', '_',  strtolower(auth()->user()->nama) . '_lampiran1_' . $randomName . '.' . $lampiran1->getClientOriginalExtension());
         $data['lampiran1'] = $lampiran1->storeAs('public/lampiran', $newLampiran1);
 
         $lampiran2 = $request->file('lampiran2');
-        $newLampiran2 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran2_' . $randomName . '.' . $lampiran2->getClientOriginalExtension()));
+        $newLampiran2 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran2_' . $randomName . '.' . $lampiran2->getClientOriginalExtension());
         $data['lampiran2'] = $lampiran2->storeAs('public/lampiran', $newLampiran2);
 
         $lampiran3 = $request->file('lampiran3');
-        $newLampiran3 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran3_' . $randomName . '.' . $lampiran3->getClientOriginalExtension()));
+        $newLampiran3 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran3_' . $randomName . '.' . $lampiran3->getClientOriginalExtension());
         $data['lampiran3'] = $lampiran3->storeAs('public/lampiran', $newLampiran3);
 
         $lampiran4 = $request->file('lampiran4');
-        $newLampiran4 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran4_' . $randomName . '.' . $lampiran4->getClientOriginalExtension()));
+        $newLampiran4 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran4_' . $randomName . '.' . $lampiran4->getClientOriginalExtension());
         $data['lampiran4'] = $lampiran4->storeAs('public/lampiran', $newLampiran4);
 
         $lampiran5 = $request->file('lampiran5');
-        $newLampiran5 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran5_' . $randomName . '.' . $lampiran5->getClientOriginalExtension()));
+        $newLampiran5 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran5_' . $randomName . '.' . $lampiran5->getClientOriginalExtension());
         $data['lampiran5'] = $lampiran5->storeAs('public/lampiran', $newLampiran5);
 
         $lampiran6 = $request->file('lampiran6');
-        $newLampiran6 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran6_' . $randomName . '.' . $lampiran6->getClientOriginalExtension()));
+        $newLampiran6 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran6_' . $randomName . '.' . $lampiran6->getClientOriginalExtension());
         $data['lampiran6'] = $lampiran6->storeAs('public/lampiran', $newLampiran6);
 
         $lampiran7 = $request->file('lampiran7');
-        $newLampiran7 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran7_' . $randomName . '.' . $lampiran7->getClientOriginalExtension()));
+        $newLampiran7 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran7_' . $randomName . '.' . $lampiran7->getClientOriginalExtension());
         $data['lampiran7'] = $lampiran7->storeAs('public/lampiran', $newLampiran7);
 
         $lampiran8 = $request->file('lampiran8');
-        $newLampiran8 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran8_' . $randomName . '.' . $lampiran8->getClientOriginalExtension()));
+        $newLampiran8 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran8_' . $randomName . '.' . $lampiran8->getClientOriginalExtension());
         $data['lampiran8'] = $lampiran8->storeAs('public/lampiran', $newLampiran8);
 
         $lampiran9 = $request->file('lampiran9');
-        $newLampiran9 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran9_' . $randomName . '.' . $lampiran9->getClientOriginalExtension()));
+        $newLampiran9 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran9_' . $randomName . '.' . $lampiran9->getClientOriginalExtension());
         $data['lampiran9'] = $lampiran9->storeAs('public/lampiran', $newLampiran9);
 
-        $lampiran10 = $request->file('lampiran10');
-        $newLampiran10 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran10_' . $randomName . '.' . $lampiran10->getClientOriginalExtension()));
-        $data['lampiran10'] = $lampiran10->storeAs('public/lampiran', $newLampiran10);
+        // $lampiran10 = $request->file('lampiran10');
+        // $newLampiran10 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran10_' . $randomName . '.' . $lampiran10->getClientOriginalExtension());
+        // $data['lampiran10'] = $lampiran10->storeAs('public/lampiran', $newLampiran10);
 
         $lampiran11 = $request->file('lampiran11');
-        $newLampiran11 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran11_' . $randomName . '.' . $lampiran11->getClientOriginalExtension()));
+        $newLampiran11 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran11_' . $randomName . '.' . $lampiran11->getClientOriginalExtension());
         $data['lampiran11'] = $lampiran11->storeAs('public/lampiran', $newLampiran11);
 
         $lampiran12 = $request->file('lampiran12');
-        $newLampiran12 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran12_' . $randomName . '.' . $lampiran12->getClientOriginalExtension()));
+        $newLampiran12 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran12_' . $randomName . '.' . $lampiran12->getClientOriginalExtension());
         $data['lampiran12'] = $lampiran12->storeAs('public/lampiran', $newLampiran12);
 
         $lampiran13 = $request->file('lampiran13');
-        $newLampiran13 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran13_' . $randomName . '.' . $lampiran13->getClientOriginalExtension()));
+        $newLampiran13 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran13_' . $randomName . '.' . $lampiran13->getClientOriginalExtension());
         $data['lampiran13'] = $lampiran13->storeAs('public/lampiran', $newLampiran13);
 
         $lampiran14 = $request->file('lampiran14');
-        $newLampiran14 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran14_' . $randomName . '.' . $lampiran14->getClientOriginalExtension()));
+        $newLampiran14 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran14_' . $randomName . '.' . $lampiran14->getClientOriginalExtension());
         $data['lampiran14'] = $lampiran14->storeAs('public/lampiran', $newLampiran14);
 
         $lampiran15 = $request->file('lampiran15');
-        $newLampiran15 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran15_' . $randomName . '.' . $lampiran15->getClientOriginalExtension()));
+        $newLampiran15 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran15_' . $randomName . '.' . $lampiran15->getClientOriginalExtension());
         $data['lampiran15'] = $lampiran15->storeAs('public/lampiran', $newLampiran15);
 
         $lampiran16 = $request->file('lampiran16');
-        $newLampiran16 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran16_' . $randomName . '.' . $lampiran16->getClientOriginalExtension()));
+        $newLampiran16 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran16_' . $randomName . '.' . $lampiran16->getClientOriginalExtension());
         $data['lampiran16'] = $lampiran16->storeAs('public/lampiran', $newLampiran16);
 
         $lampiran17 = $request->file('lampiran17');
-        $newLampiran17 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran17_' . $randomName . '.' . $lampiran17->getClientOriginalExtension()));
+        $newLampiran17 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran17_' . $randomName . '.' . $lampiran17->getClientOriginalExtension());
         $data['lampiran17'] = $lampiran17->storeAs('public/lampiran', $newLampiran17);
 
         if ($request->file('lampiran18')) {
             $lampiran18 = $request->file('lampiran18');
-            $newLampiran18 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran18_' . $randomName . '.' . $lampiran18->getClientOriginalExtension()));
+            $newLampiran18 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran18_' . $randomName . '.' . $lampiran18->getClientOriginalExtension());
             $data['lampiran18'] = $lampiran18->storeAs('public/lampiran', $newLampiran18);
         }
         if ($request->file('lampiran19')) {
             $lampiran19 = $request->file('lampiran19');
-            $newLampiran19 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran19_' . $randomName . '.' . $lampiran19->getClientOriginalExtension()));
+            $newLampiran19 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran19_' . $randomName . '.' . $lampiran19->getClientOriginalExtension());
             $data['lampiran19'] = $lampiran19->storeAs('public/lampiran', $newLampiran19);
         }
         if ($request->file('lampiran20')) {
             $lampiran20 = $request->file('lampiran20');
-            $newLampiran20 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran20_' . $randomName . '.' . $lampiran20->getClientOriginalExtension()));
+            $newLampiran20 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran20_' . $randomName . '.' . $lampiran20->getClientOriginalExtension());
             $data['lampiran20'] = $lampiran20->storeAs('public/lampiran', $newLampiran20);
         }
         if ($request->file('lampiran21')) {
             $lampiran21 = $request->file('lampiran21');
-            $newLampiran21 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran21_' . $randomName . '.' . $lampiran21->getClientOriginalExtension()));
+            $newLampiran21 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran21_' . $randomName . '.' . $lampiran21->getClientOriginalExtension());
             $data['lampiran21'] = $lampiran21->storeAs('public/lampiran', $newLampiran21);
         }
 
@@ -156,7 +172,7 @@ class PermohonansktController extends Controller
         } catch (\Throwable $th) {
             return $this->error($th->getMessage());
         }
-        return $this->success('Permohonan berhasil terkirim');
+        return $this->success('OK', 'Permohonan berhasil terkirim');
     }
 
     public function show($id)
@@ -186,7 +202,7 @@ class PermohonansktController extends Controller
             'lampiran7' => 'file|mimes:pdf|max:2048',
             'lampiran8' => 'file|mimes:pdf|max:2048',
             'lampiran9' => 'file|mimes:pdf|max:2048',
-            'lampiran10' => 'file|mimes:pdf|max:2048',
+            'lampiran10' => 'file|string|max:20|unique:permohonans,lampiran10,' . $id,
             'lampiran11' => 'file|mimes:pdf|max:2048',
             'lampiran12' => 'file|mimes:pdf|max:2048',
             'lampiran13' => 'file|mimes:pdf|max:2048',
@@ -205,7 +221,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran1')) {
             $lampiran1 = $request->file('lampiran1');
-            $newLampiran1 = Str::replace('', '_',  strtolower(auth()->user()->nama . '_lampiran1_' . $randomName . '.' . $lampiran1->getClientOriginalExtension()));
+            $newLampiran1 = Str::replace(' ', '_',  strtolower(auth()->user()->nama) . '_lampiran1_' . $randomName . '.' . $lampiran1->getClientOriginalExtension());
             $data['lampiran1'] = $lampiran1->storeAs('public/lampiran', $newLampiran1);
             Storage::delete($permohonan->lampiran1);
         } else {
@@ -214,7 +230,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran2')) {
             $lampiran2 = $request->file('lampiran2');
-            $newLampiran2 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran2_' . $randomName . '.' . $lampiran2->getClientOriginalExtension()));
+            $newLampiran2 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran2_' . $randomName . '.' . $lampiran2->getClientOriginalExtension());
             $data['lampiran2'] = $lampiran2->storeAs('public/lampiran', $newLampiran2);
             Storage::delete($permohonan->lampiran2);
         } else {
@@ -223,7 +239,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran3')) {
             $lampiran3 = $request->file('lampiran3');
-            $newLampiran3 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran3_' . $randomName . '.' . $lampiran3->getClientOriginalExtension()));
+            $newLampiran3 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran3_' . $randomName . '.' . $lampiran3->getClientOriginalExtension());
             $data['lampiran3'] = $lampiran3->storeAs('public/lampiran', $newLampiran3);
             Storage::delete($permohonan->lampiran3);
         } else {
@@ -232,7 +248,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran4')) {
             $lampiran4 = $request->file('lampiran4');
-            $newLampiran4 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran4_' . $randomName . '.' . $lampiran4->getClientOriginalExtension()));
+            $newLampiran4 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran4_' . $randomName . '.' . $lampiran4->getClientOriginalExtension());
             $data['lampiran4'] = $lampiran4->storeAs('public/lampiran', $newLampiran4);
             Storage::delete($permohonan->lampiran4);
         } else {
@@ -241,7 +257,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran5')) {
             $lampiran5 = $request->file('lampiran5');
-            $newLampiran5 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran5_' . $randomName . '.' . $lampiran5->getClientOriginalExtension()));
+            $newLampiran5 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran5_' . $randomName . '.' . $lampiran5->getClientOriginalExtension());
             $data['lampiran5'] = $lampiran5->storeAs('public/lampiran', $newLampiran5);
             Storage::delete($permohonan->lampiran5);
         } else {
@@ -250,7 +266,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran6')) {
             $lampiran6 = $request->file('lampiran6');
-            $newLampiran6 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran6_' . $randomName . '.' . $lampiran6->getClientOriginalExtension()));
+            $newLampiran6 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran6_' . $randomName . '.' . $lampiran6->getClientOriginalExtension());
             $data['lampiran6'] = $lampiran6->storeAs('public/lampiran', $newLampiran6);
             Storage::delete($permohonan->lampiran6);
         } else {
@@ -259,7 +275,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran7')) {
             $lampiran7 = $request->file('lampiran7');
-            $newLampiran7 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran7_' . $randomName . '.' . $lampiran7->getClientOriginalExtension()));
+            $newLampiran7 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran7_' . $randomName . '.' . $lampiran7->getClientOriginalExtension());
             $data['lampiran7'] = $lampiran7->storeAs('public/lampiran', $newLampiran7);
             Storage::delete($permohonan->lampiran7);
         } else {
@@ -268,7 +284,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran8')) {
             $lampiran8 = $request->file('lampiran8');
-            $newLampiran8 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran8_' . $randomName . '.' . $lampiran8->getClientOriginalExtension()));
+            $newLampiran8 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran8_' . $randomName . '.' . $lampiran8->getClientOriginalExtension());
             $data['lampiran8'] = $lampiran8->storeAs('public/lampiran', $newLampiran8);
             Storage::delete($permohonan->lampiran8);
         } else {
@@ -277,25 +293,22 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran9')) {
             $lampiran9 = $request->file('lampiran9');
-            $newLampiran9 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran9_' . $randomName . '.' . $lampiran9->getClientOriginalExtension()));
+            $newLampiran9 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran9_' . $randomName . '.' . $lampiran9->getClientOriginalExtension());
             $data['lampiran9'] = $lampiran9->storeAs('public/lampiran', $newLampiran9);
             Storage::delete($permohonan->lampiran9);
         } else {
             $data['lampiran9'] = $permohonan->lampiran9;
         }
 
-        if ($request->file('lampiran10')) {
-            $lampiran10 = $request->file('lampiran10');
-            $newLampiran10 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran10_' . $randomName . '.' . $lampiran10->getClientOriginalExtension()));
-            $data['lampiran10'] = $lampiran10->storeAs('public/lampiran', $newLampiran10);
-            Storage::delete($permohonan->lampiran10);
+        if ($request->lampiran10) {
+            $data['lampiran10'] = $request->lampiran10;
         } else {
             $data['lampiran10'] = $permohonan->lampiran10;
         }
 
         if ($request->file('lampiran11')) {
             $lampiran11 = $request->file('lampiran11');
-            $newLampiran11 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran11_' . $randomName . '.' . $lampiran11->getClientOriginalExtension()));
+            $newLampiran11 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran11_' . $randomName . '.' . $lampiran11->getClientOriginalExtension());
             $data['lampiran11'] = $lampiran11->storeAs('public/lampiran', $newLampiran11);
             Storage::delete($permohonan->lampiran11);
         } else {
@@ -304,7 +317,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran12')) {
             $lampiran12 = $request->file('lampiran12');
-            $newLampiran12 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran12_' . $randomName . '.' . $lampiran12->getClientOriginalExtension()));
+            $newLampiran12 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran12_' . $randomName . '.' . $lampiran12->getClientOriginalExtension());
             $data['lampiran12'] = $lampiran12->storeAs('public/lampiran', $newLampiran12);
             Storage::delete($permohonan->lampiran12);
         } else {
@@ -313,7 +326,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran13')) {
             $lampiran13 = $request->file('lampiran13');
-            $newLampiran13 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran13_' . $randomName . '.' . $lampiran13->getClientOriginalExtension()));
+            $newLampiran13 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran13_' . $randomName . '.' . $lampiran13->getClientOriginalExtension());
             $data['lampiran13'] = $lampiran13->storeAs('public/lampiran', $newLampiran13);
             Storage::delete($permohonan->lampiran13);
         } else {
@@ -322,7 +335,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran14')) {
             $lampiran14 = $request->file('lampiran14');
-            $newLampiran14 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran14_' . $randomName . '.' . $lampiran14->getClientOriginalExtension()));
+            $newLampiran14 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran14_' . $randomName . '.' . $lampiran14->getClientOriginalExtension());
             $data['lampiran14'] = $lampiran14->storeAs('public/lampiran', $newLampiran14);
             Storage::delete($permohonan->lampiran14);
         } else {
@@ -331,7 +344,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran15')) {
             $lampiran15 = $request->file('lampiran15');
-            $newLampiran15 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran15_' . $randomName . '.' . $lampiran15->getClientOriginalExtension()));
+            $newLampiran15 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran15_' . $randomName . '.' . $lampiran15->getClientOriginalExtension());
             $data['lampiran15'] = $lampiran15->storeAs('public/lampiran', $newLampiran15);
             Storage::delete($permohonan->lampiran15);
         } else {
@@ -340,7 +353,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran16')) {
             $lampiran16 = $request->file('lampiran16');
-            $newLampiran16 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran16_' . $randomName . '.' . $lampiran16->getClientOriginalExtension()));
+            $newLampiran16 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran16_' . $randomName . '.' . $lampiran16->getClientOriginalExtension());
             $data['lampiran16'] = $lampiran16->storeAs('public/lampiran', $newLampiran16);
             Storage::delete($permohonan->lampiran16);
         } else {
@@ -349,7 +362,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran17')) {
             $lampiran17 = $request->file('lampiran17');
-            $newLampiran17 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran17_' . $randomName . '.' . $lampiran17->getClientOriginalExtension()));
+            $newLampiran17 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran17_' . $randomName . '.' . $lampiran17->getClientOriginalExtension());
             $data['lampiran17'] = $lampiran17->storeAs('public/lampiran', $newLampiran17);
             Storage::delete($permohonan->lampiran17);
         } else {
@@ -358,7 +371,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran18')) {
             $lampiran18 = $request->file('lampiran18');
-            $newLampiran18 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran18_' . $randomName . '.' . $lampiran18->getClientOriginalExtension()));
+            $newLampiran18 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran18_' . $randomName . '.' . $lampiran18->getClientOriginalExtension());
             $data['lampiran18'] = $lampiran18->storeAs('public/lampiran', $newLampiran18);
             Storage::delete($permohonan->lampiran18);
         } else {
@@ -367,7 +380,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran19')) {
             $lampiran19 = $request->file('lampiran19');
-            $newLampiran19 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran19_' . $randomName . '.' . $lampiran19->getClientOriginalExtension()));
+            $newLampiran19 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran19_' . $randomName . '.' . $lampiran19->getClientOriginalExtension());
             $data['lampiran19'] = $lampiran19->storeAs('public/lampiran', $newLampiran19);
             Storage::delete($permohonan->lampiran19);
         } else {
@@ -376,7 +389,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran20')) {
             $lampiran20 = $request->file('lampiran20');
-            $newLampiran20 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran20_' . $randomName . '.' . $lampiran20->getClientOriginalExtension()));
+            $newLampiran20 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran20_' . $randomName . '.' . $lampiran20->getClientOriginalExtension());
             $data['lampiran20'] = $lampiran20->storeAs('public/lampiran', $newLampiran20);
             Storage::delete($permohonan->lampiran20);
         } else {
@@ -385,7 +398,7 @@ class PermohonansktController extends Controller
 
         if ($request->file('lampiran21')) {
             $lampiran21 = $request->file('lampiran21');
-            $newLampiran21 = Str::replace('', '_', strtolower(auth()->user()->nama . '_lampiran21_' . $randomName . '.' . $lampiran21->getClientOriginalExtension()));
+            $newLampiran21 = Str::replace(' ', '_', strtolower(auth()->user()->nama) . '_lampiran21_' . $randomName . '.' . $lampiran21->getClientOriginalExtension());
             $data['lampiran21'] = $lampiran21->storeAs('public/lampiran', $newLampiran21);
             Storage::delete($permohonan->lampiran21);
         } else {
@@ -409,6 +422,6 @@ class PermohonansktController extends Controller
             saveLogs($th->getMessage(), 'error');
             throw $th;
         }
-        return redirect('/user/dashboard');
+        return redirect('/user/permohonan_skt')->with('msg_delete', 'Permohonan berhasil dihapus');
     }
 }

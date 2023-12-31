@@ -88,7 +88,7 @@
                     </div>
                     <div class="form-group">
                       <label for="lampiran10"> Nomor wajib pajak atas nama ormas</label>
-                      <input type="file" class="file-input form-control @error('lampiran10') is-invalid @enderror" id="lampiran1" name="lampiran10">
+                      <input type="text" class="file-input form-control @error('lampiran10') is-invalid @enderror" id="lampiran1" name="lampiran10" value="{{ $lampiran10 }}">
                       @error('lampiran10')
                         <div class="invalid-feedback">{{ $message }}</div>
                       @enderror

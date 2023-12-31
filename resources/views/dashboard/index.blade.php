@@ -1,95 +1,131 @@
 @extends('layouts.main')
 @section('content')
-<div class="main-content">
-    <section class="section">
-      <div class="section-header">
-        <h1>Dashboard</h1>
-      </div>
-      <div class="section-body">
-        <div class="row">
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <div class="card-header">
-                <h4>DATA DIRI</h4>
+<div class="main-wrapper">
+    <!-- Main Content -->
+    <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Dashboard</h1>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="alert alert-primary" role="alert">
+                <h4 class="alert-heading">Selamat datang {{ $nama[0] }}👋</h4>
+                <p>Ini adalah dashboard dimana Anda bisa mengajukan permohonan SKT dan dana HIBAH. Semoga hari Anda menyenangkan😊</p>
               </div>
-              <div class="card-body">
-                  <form method="POST" action="/user/profile-information" class="needs-validation" novalidate="" enctype="multipart/form-data">
-                    @method('PUT')
-                      @csrf
-                    <div class="form-group">
-                      <label for="img">Photo</label>
-                      <img id="imgPreview" src="{{ \Illuminate\Support\Facades\Storage::url(auth()->user()->photo) }}" loading="lazy" alt="photo" width="100%" >
-                      @error('img')
-                      <div class="invalid-feedback">
-                        {{ $message }}
-                      </div>
-                      @enderror
+              @if (session('msg_ditolak'))
+              <div class="alert alert-warning">{{ session('msg_ditolak') }}</div>
+              @endif
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                <div class="card card-statistic-1 mb-3">
+                    <div class="card-icon bg-primary">
+                        <i class="fa fa-user fa-2x" style="color: #fff"></i>
                     </div>
-                    <div class="form-group">
-                      <label for="name">Nama</label>
-                      <input id="name" type="text" class="form-control" name="name" tabindex="1" value="{{ auth()->user()->nama }}">
+                    <a href="/user/profile" style="text-decoration: none">
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>{{ __('Data diri') }}</h4>
+                        </div>
+                        <div class="card-body text-uppercase">{{ $nama[0] }}</div>
                     </div>
-                    <div class="form-group">
-                        <label for="">Jabatan</label>
-                        <input type="text" class="form-control" name="jabatan" tabindex="2" value="{{ auth()->user()->jabatan }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Nama Ormas</label>
-                        <input type="text" class="form-control" name="instansi" tabindex="2" value="{{ auth()->user()->nama_ormas }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Alamat Sekretariat</label>
-                        <textarea type="text" class="form-control" name="instansi" tabindex="2">{{ auth()->user()->alamat_sekretariat }}</textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="email">Email</label>
-                      <input type="email" class="form-control" name="email" tabindex="2" value="{{ auth()->user()->email }}">
-                    </div>
-                    <div class="form-group">
-                      <label for="no_tlp">No Tlp/WhatsApp</label>
-                      <input id="no_tlp" type="number" class="form-control @error('no_tlp') is-invalid @enderror" name="no_tlp" tabindex="6" value="{{ auth()->user()->no_tlp }}">
-                    </div>
-                  </form>
+                    </a>
                 </div>
             </div>
-          </div>
-          <div class="col-md-8 mb-3">
-            <a href="/user/permohonan_skt/create" class="btn btn-primary mb-3">AJUKAN PERMOHONAN</a>
-            <div class="card">
-              <div class="card-header">
-                <h4>PERMOHONAN SKT/ORMAS</h4>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
+                <div class="card card-statistic-1">
+                    <div class="card-icon bg-primary">
+                        <i class="fa fa-user-clock fa-2x" style="color: #fff"></i>
+                    </div>
+                    <a href="/user/permohonan_skt" style="text-decoration: none">
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>{{ __('Permohonan SKT') }}</h4>
+                        </div>
+                        <div class="card-body text-uppercase">{{ $permohonan_skt }}</div>
+                    </div>
+                    </a>
+                </div>
             </div>
-            <div class="card-body">
-              <div class="table-responsive" id="dataTable">
-                <button class="btn btn-primary btn-lg btn-block" type="button" disabled>
-                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                  Mohon tunggu sebentar...
-                </button>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                <div class="card card-statistic-1">
+                    <div class="card-icon bg-primary">
+                      <i class="fa fa-heart fa-2x" style="color: #fff"s></i>
+                    </div>
+                    <a href="/user/hibah" style="text-decoration: none">
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>{{ __('Dana hibah') }}</h4>
+                        </div>
+                        <div class="card-body text-uppercase">#</div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                    <h4>Riwayat Pencairan Dana Hibah</h4>
+                </div>
+                <div class="card-body table-responsive" id="dataTableUser">
+                  <button class="btn btn-primary btn-lg btn-block" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Mohon tunggu sebentar...
+                  </button>
+                </div>
               </div>
             </div>
-            </div>
           </div>
-          </div>
+        </section>
       </div>
-      </div>
-    </section>
-  </div>
+</div>
 @endsection
 @push('js')
-<script>
-  $(document).ready(async function loadTable() {
-        var param = {
-            url: '{{ url()->current() }}',
-            method: 'GET',
-            data: {
-                load: 'table'
-            }
-        }
-        
-        await transAjax(param).then((result) => {
-          console.log(result);
-            $('#dataTable').html(result);
-        });
+<script type="text/javascript">
+    var page = 1;
+    $(document).ready(function() {
+        loadPemohon();
+        loadPermohonan();
     });
+
+    async function loadPemohon() {
+        var param = {
+          url: '/admin/users',
+          method: 'GET',
+          data: {
+            load: 'table',
+            page: page,
+          },
+        }
+
+        await transAjax(param).then((ress) => {
+          $('#dataTableUser').html(ress);
+        }).cath((err) => {
+          $('#dataTableUser').html(`<button class="btn btn-warning btn-lg btn-block">${err.responseJSON.message}</button>`);
+        });
+    }
+
+
+
+    async function loadPermohonan() {
+      var param = {
+          url: '/admin/permohonan',
+          method: 'GET',
+          data: {
+            load: 'table',
+            page: page,
+          },
+        }
+
+        await transAjax(param).then((ress) => {
+          $('#dataTablePermohonan').html(ress);
+        }).catch((err) => {
+          $('#dataTablePermohonan').html(`<button class="btn btn-warning btn-lg btn-block">${err.responseJSON.message}</button>`)
+        });
+    }
 </script>
 @endpush

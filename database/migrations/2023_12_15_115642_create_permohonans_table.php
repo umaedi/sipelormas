@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('permohonans', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->string('no_skt')->nullable();
             $table->string('lampiran1');
             $table->string('lampiran2');
@@ -41,6 +41,8 @@ return new class extends Migration
             $table->enum('status', array('dalam antrian', 'diproses', 'diterima', 'ditolak'))->default('dalam antrian');
             $table->string('skt')->nullable();
             $table->string('pesan')->nullable();
+            $table->string('terdaftar_at')->nullable();
+            $table->string('target_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

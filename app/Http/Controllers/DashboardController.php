@@ -25,6 +25,10 @@ class DashboardController extends Controller
             $data['table'] = $this->permohonan->Query()->where('user_id', Auth::user()->id)->get();
             return view('dashboard._data_table', $data);
         }
-        return view('dashboard.index');
+
+        $data['title'] = 'Dashboard Sipelormas';
+        $data['nama'] = explode(' ', auth()->user()->nama);
+        $data['permohonan_skt'] = $this->permohonan->Query()->where('user_id', Auth::user()->id)->count();
+        return view('dashboard.index', $data);
     }
 }

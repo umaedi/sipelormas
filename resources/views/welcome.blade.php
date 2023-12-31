@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <main role="main" class="container">
-  <div class="d-flex align-items-center p-3 mt-3 text-white-50 bg-primary rounded box-shadow">
+  <div class="d-flex align-items-center mt-3 p-3 text-white-50 bg-primary rounded box-shadow">
     <div class="lh-100">
-      <h6 class="mb-0 text-white lh-100 mb-3">Sistem Pelaporan Organisasi Kemasyarakatan</h6>
+      <h6 class="mb-0 text-white lh-100">Sistem Pelaporan Organisasi Kemasyarakatan</h6>
     </div>
   </div>
   <div class="row">
@@ -11,7 +11,7 @@
       <div class="my-3 p-3 bg-white rounded box-shadow">
         <div class="border-bottom border-gray pb-2 mb-3">
           <h6 class="">Persyaratan SKT/ORMAS</h6>
-          <p class="text-small text-muted">Sesuai Undang-Undang No. 17 Tahun 2013 dan PP No. 58 tahun 2016 tentang pelaksanaan UU No.17 Tahun 2013, serta Permendagri No. 57 Tahun 2017 dan PERBUB No 66 Tahun 2011, Permendagri NO 77 Tahun 2020, PERBUB NO 38 Tahun 2020</p>
+          <p class="text-small text-muted">Sesuai dengan Undang-Undang No. 17 Tahun 2013 dan Peraturan Pemerintah No. 58 Tahun 2016 tentang pelaksanaan Undang-Undang No. 17 Tahun 2013, serta Peraturan Menteri Dalam Negeri No. 57 Tahun 2017 dan Peraturan Bupati No. 66 Tahun 2011, Peraturan Menteri Dalam Negeri No. 77 Tahun 2020, dan Peraturan Bupati No. 38 Tahun 2020.</p>
         </div>
         <div id="accordion">
            <div class="card mb-3">
@@ -147,7 +147,7 @@
              <div class="card-header" id="lampiran_10">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran10" aria-expanded="false" aria-controls="lampiran10">
-                  Lampiran 10 (wajib diisi, format pdf)
+                  Lampiran 10 (wajib diisi)
                  </button>
                </h5>
              </div>
@@ -259,13 +259,13 @@
              <div class="card-header" id="lampiran_18">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran18" aria-expanded="false" aria-controls="lampiran18">
-                  Lampiran 18 (Opsional, fomat pdf)
+                  Lampiran 18 (Wajib diisi, fomat pdf)
                  </button>
                </h5>
              </div>
              <div id="lampiran18" class="collapse" aria-labelledby="lampiran_18" data-parent="#accordion">
                <div class="card-body">
-                Surat  pernyataan bahwa nama, lambang, bendera, tanda gamba, simbol, atribut, dan cap stempel yang digunakan belum menjadi hak paten dan/atau hak cipta pihak dan serta  bukan  merupakan  milik  pemerintah,  yang  ditandatangani  oleh  ketua  dan sekretaris.
+                Surat  persetujuan kesediaan atau persetujuan dari pejabat negara, pejabat pemerintah dan atau tokohnya masyarakat yang bersangkutan, yang namanya dicantumkan kepengurusan ormas
                </div>
              </div>
            </div>
@@ -301,13 +301,13 @@
              <div class="card-header" id="lampiran_21">
                <h5 class="mb-0">
                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#lampiran21" aria-expanded="false" aria-controls="lampiran21">
-                  Lampiran 21 (Wajib diisi, fomat pdf)
+                  Lampiran 21 (Opsional, fomat pdf)
                  </button>
                </h5>
              </div>
              <div id="lampiran21" class="collapse" aria-labelledby="lampiran_21" data-parent="#accordion">
                <div class="card-body">
-                Surat  persetujuan kesediaan atau persetujuan dari pejabat negara, pejabat pemerintah dan atau tokohnya masyarakat yang bersangkutan, yang namanya dicantumkan kepengurusan ormas
+                Surat  pernyataan bahwa nama, lambang, bendera, tanda gamba, simbol, atribut, dan cap stempel yang digunakan belum menjadi hak paten dan/atau hak cipta pihak dan serta  bukan  merupakan  milik  pemerintah,  yang  ditandatangani  oleh  ketua  dan sekretaris.
                </div>
              </div>
            </div>
@@ -344,12 +344,12 @@
     </div>
       <div class="my-3 p-3 bg-white rounded box-shadow text-center">
         <h6>CEK DOKUMEN</h6>
-        <img src="{{ asset('img/qrcode.png') }}" alt="">
+        <img class="lazyload" loading="lazy" src="{{ asset('img/qrcode.png') }}" alt="">
         <button class="btn btn-primary btn-block" id="scanQR" aria-label="Scan QRCode">SCAN DOKUMEN</button>
       </div>
       <div class="my-3 p-3 bg-white rounded box-shadow text-center">
         <h6>CEK NO SKT</h6>
-          <input type="text" id="no_skt" class="form-control mb-3" name="no_skt" required>
+          <input type="text" id="no_skt" class="form-control mb-3" name="no_skt" >
           <button id="btn_cek" class="btn btn-primary btn-block">CEK SKT</button>
           <button id="btn_loading" class="btn btn-primary" style="display: none" type="button" disabled>
             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

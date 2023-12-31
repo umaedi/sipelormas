@@ -3,9 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>{{ $title ?? "SIPELORMAS" }}</title>
   <meta name="theme-color" content="#2691DB"/>
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ $title ?? "SIPELORMAS" }}</title>
+  <meta name="description" content="Sistem Pelaporan Organisasi Kemasyarakatan">
+  <meta name="keywords" content="Kesbangpol, Tulang Bawang, Sistem Pelaporan Organisasi Kemasyarakatan"/>
+  <meta property="og:url" content="https://siperlormas.tulangbawangkab.go.id/"/>
+  <meta property="og:title" content="Sistem Pelaporan Organisasi Kemasyarakatan"/>
+  <meta property="og:description" content="Sistem Pelaporan Organisasi Kemasyarakatan" />
+  <meta property="og:image" content="{{ asset('img/thumbnail.jpg') }}"/>
+  <meta property="og:image:url" content="{{ asset('img/thumbnail.jpg') }}"/>
+  <meta property="twitter:image" content="{{ asset('img/thumbnail.jpg') }}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ asset('css') }}/bootstrap.4.3.1.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- Template CSS -->
