@@ -19,7 +19,7 @@
                 @else
                 <td><span class="badge badge-primary">{{ $tb->status }}</span></td>
                 @endif
-                <td><a href="/user/permohonan_skt/show/{{ $tb->id }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a></td>
+                <td><a href="/user/hibah/show/{{ $tb->id }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a></td>
             </tr>
         @empty
             <tr>

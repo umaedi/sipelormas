@@ -43,6 +43,7 @@ return new class extends Migration
             $table->string('pesan')->nullable();
             $table->string('terdaftar_at')->nullable();
             $table->string('target_at')->nullable();
+            $table->string('keterangan')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

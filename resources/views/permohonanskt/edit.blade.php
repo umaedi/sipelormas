@@ -88,7 +88,7 @@
                     </div>
                     <div class="form-group">
                       <label for="lampiran10"> Nomor wajib pajak atas nama ormas</label>
-                      <input type="text" class="file-input form-control @error('lampiran10') is-invalid @enderror" id="lampiran1" name="lampiran10" value="{{ $lampiran10 }}">
+                      <input type="text" class="file-input form-control @error('lampiran10') is-invalid @enderror" id="lampiran1" name="lampiran10" value="{{ $permohonan->lampiran10 }}">
                       @error('lampiran10')
                         <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
@@ -203,7 +203,7 @@ $('#form_skt').submit(async function uploadFile(e) {
     loading(true);
     await transAjax(param).then((result) => {
       loading(false);
-      swal({text: result.data, icon: 'success', timer: 3000,}).then(() => {
+      swal({text: result.message, icon: 'success', timer: 3000,}).then(() => {
           window.location.href = '/user/dashboard';
       });
     }).catch((error) => {

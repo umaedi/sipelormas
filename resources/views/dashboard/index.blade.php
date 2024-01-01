@@ -18,60 +18,54 @@
               @endif
             </div>
           </div>
-          <div class="row mb-3">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                <div class="card card-statistic-1 mb-3">
-                    <div class="card-icon bg-primary">
-                        <i class="fa fa-user fa-2x" style="color: #fff"></i>
-                    </div>
-                    <a href="/user/profile" style="text-decoration: none">
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>{{ __('Data diri') }}</h4>
-                        </div>
-                        <div class="card-body text-uppercase">{{ $nama[0] }}</div>
-                    </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
-                <div class="card card-statistic-1">
-                    <div class="card-icon bg-primary">
-                        <i class="fa fa-user-clock fa-2x" style="color: #fff"></i>
-                    </div>
-                    <a href="/user/permohonan_skt" style="text-decoration: none">
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>{{ __('Permohonan SKT') }}</h4>
-                        </div>
-                        <div class="card-body text-uppercase">{{ $permohonan_skt }}</div>
-                    </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                <div class="card card-statistic-1">
-                    <div class="card-icon bg-primary">
-                      <i class="fa fa-heart fa-2x" style="color: #fff"s></i>
-                    </div>
-                    <a href="/user/hibah" style="text-decoration: none">
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>{{ __('Dana hibah') }}</h4>
-                        </div>
-                        <div class="card-body text-uppercase">#</div>
-                    </div>
-                    </a>
-                </div>
-            </div>
-        </div>
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+            <div class="col-lg-4 col-md-12 col-12 col-sm-12">
+              <div class="card card-statistic-1 mb-3">
+                <div class="card-icon bg-primary">
+                    <i class="fa fa-user fa-2x" style="color: #fff"></i>
+                </div>
+                <a href="/user/profile" style="text-decoration: none">
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>{{ __('Data diri') }}</h4>
+                    </div>
+                    <div class="card-body text-uppercase">{{ $nama[0] }}</div>
+                </div>
+                </a>
+              </div>
+              <div class="card card-statistic-1 mb-3">
+                <div class="card-icon bg-primary">
+                    <i class="fa fa-user-clock fa-2x" style="color: #fff"></i>
+                </div>
+                <a href="/user/permohonan_skt" style="text-decoration: none">
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>{{ __('Permohonan SKT') }}</h4>
+                    </div>
+                    <div class="card-body text-uppercase">{{ $permohonan_skt }}</div>
+                </div>
+                </a>
+              </div>
+              <div class="card card-statistic-1 mb-3">
+                <div class="card-icon bg-primary">
+                  <i class="fa fa-heart fa-2x" style="color: #fff"s></i>
+                </div>
+                <a href="/user/hibah" style="text-decoration: none">
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>{{ __('Dana hibah') }}</h4>
+                    </div>
+                    <div class="card-body text-uppercase">{{ $hibah }}</div>
+                </div>
+                </a>
+            </div>
+            </div>
+            <div class="col-lg-8 col-md-12 col-12 col-sm-12">
               <div class="card">
                 <div class="card-header">
                     <h4>Riwayat Pencairan Dana Hibah</h4>
                 </div>
-                <div class="card-body table-responsive" id="dataTableUser">
+                <div class="card-body table-responsive" id="dataTable">
                   <button class="btn btn-primary btn-lg btn-block" type="button" disabled>
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                     Mohon tunggu sebentar...
@@ -86,45 +80,23 @@
 @endsection
 @push('js')
 <script type="text/javascript">
-    var page = 1;
     $(document).ready(function() {
-        loadPemohon();
-        loadPermohonan();
+        loadRiwayatHibah();
     });
 
-    async function loadPemohon() {
+    async function loadRiwayatHibah() {
         var param = {
-          url: '/admin/users',
+          url: '{{ url()->current() }}',
           method: 'GET',
           data: {
             load: 'table',
-            page: page,
           },
         }
 
         await transAjax(param).then((ress) => {
-          $('#dataTableUser').html(ress);
+          $('#dataTable').html(ress);
         }).cath((err) => {
           $('#dataTableUser').html(`<button class="btn btn-warning btn-lg btn-block">${err.responseJSON.message}</button>`);
-        });
-    }
-
-
-
-    async function loadPermohonan() {
-      var param = {
-          url: '/admin/permohonan',
-          method: 'GET',
-          data: {
-            load: 'table',
-            page: page,
-          },
-        }
-
-        await transAjax(param).then((ress) => {
-          $('#dataTablePermohonan').html(ress);
-        }).catch((err) => {
-          $('#dataTablePermohonan').html(`<button class="btn btn-warning btn-lg btn-block">${err.responseJSON.message}</button>`)
         });
     }
 </script>

@@ -34,16 +34,16 @@
                     </div>
                     <div class="form-group">
                       <label for="lampiran1">Surat Permohonan SKT yang ditandatangani pendiri dan pengurus ormas</label>
-                      <input type="file" class="file-input form-control" id="lampiran1" name="lampiran_1">
+                      <input type="file" class="file-input form-control" id="lampiran1" name="lampiran1">
                     </div>
                     <div class="form-group">
                       <label for="lampiran2">Salinan/ fotocopy Akte Pendirian ormas (dari Notaris) yang membuat anggaran dasar
                         (AD)  atau Anggaran dasar dan Anggaran rumah Tangga (ART)</label>
-                      <input type="file" class="file-input form-control" id="lampiran2" name="lampiran_2">
+                      <input type="file" class="file-input form-control" id="lampiran2" name="lampiran2">
                     </div>
                     <div class="form-group">
                       <label for="lampiran3"> Anggaran dasar (AD) Anggaran rumah tangga (ART) (memuat   paling sedikit nama dan lambang, tempat kedudukan, asas dan tujuan, dan fungsi, kepengurusan, hak dan kewajiban anggota, pengelolaan keuangan, mekanisme penyelsaian sengketa, dan pengawasan internal, dan pembubaran organisasi).</label>
-                      <input type="file" class="file-input form-control" id="lampiran3" name="lampiran_3">
+                      <input type="file" class="file-input form-control" id="lampiran3" name="lampiran3">
                     </div>
                     @include('layouts._loading')
                     <button id="btn_submit" type="submit" class="btn btn-primary">KIRIM PERMOHONAN</button>
@@ -80,7 +80,7 @@ $('#form_skt').submit(async function uploadFile(e) {
       loading(false);
       console.log(result);
       swal({text: result.message, icon: 'success', timer: 3000,}).then(() => {
-          window.location.href = '/user/permohonan_skt';
+          window.location.href = '/user/hibah';
       });
     }).catch((error) => {
         loading(false);

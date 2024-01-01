@@ -186,6 +186,7 @@ class PermohonansktController extends Controller
     {
         $data['title'] = 'Edit Permohonan';
         $data['id'] = $id;
+        $data['permohonan'] = $this->permohonan->find($id);
         return view('permohonanskt.edit', $data);
     }
 
@@ -202,7 +203,7 @@ class PermohonansktController extends Controller
             'lampiran7' => 'file|mimes:pdf|max:2048',
             'lampiran8' => 'file|mimes:pdf|max:2048',
             'lampiran9' => 'file|mimes:pdf|max:2048',
-            'lampiran10' => 'file|string|max:20|unique:permohonans,lampiran10,' . $id,
+            'lampiran10' => 'string|max:20|unique:permohonans,lampiran10,' . $id,
             'lampiran11' => 'file|mimes:pdf|max:2048',
             'lampiran12' => 'file|mimes:pdf|max:2048',
             'lampiran13' => 'file|mimes:pdf|max:2048',
@@ -411,7 +412,7 @@ class PermohonansktController extends Controller
         } catch (\Throwable $th) {
             return $this->error($th->getMessage());
         }
-        return $this->success('Permohonan berhasil diperbaharui');
+        return $this->success('OK', 'Permohonan berhasil diperbaharui');
     }
 
     public function destroy($id)

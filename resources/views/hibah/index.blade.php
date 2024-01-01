@@ -13,6 +13,9 @@
         <div class="row">
           <div class="col-md-12 mb-3">
             <a href="/user/hibah/create" class="btn btn-primary mb-3">BUAT PENGAJUAN</a>
+            @if (session('msg_ditolak'))
+            <div class="alert alert-warning">{{ session('msg_ditolak') }}</div>
+            @endif
             <div class="card">
               @if (session('msg_delete'))
               <div class="alert alert-success">{{ session('msg_delete') }}</div>

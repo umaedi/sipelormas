@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('jumlah_hibah');
             $table->enum('status', array('dalam antrian', 'diproses', 'diterima', 'ditolak'))->default('dalam antrian');
             $table->string('tgl_acc')->nullable();
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

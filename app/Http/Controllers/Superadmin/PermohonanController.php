@@ -47,7 +47,7 @@ class PermohonanController extends Controller
             $data['table'] = $this->permohonan->Query()->where('status', 'diterima')->get();
             return view('superadmin.permohonan._data_table_tte', $data);
         }
-        $data['title'] = 'Permohonan tertnda';
+        $data['title'] = 'Permohonan tertanda';
         return view('superadmin.permohonan.signed', $data);
     }
 

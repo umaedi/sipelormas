@@ -43,6 +43,7 @@ Route::middleware('auth')->prefix('user')->group(function () {
     Route::get('/hibah', [HibahController::class, 'index']);
     Route::get('/hibah/create', [HibahController::class, 'create']);
     Route::post('/hibah/store', [HibahController::class, 'store']);
+    Route::get('/hibah/show/{id}', [HibahController::class, 'show']);
 
     Route::get('/download/{id}', DownloadController::class);
 });

@@ -17,6 +17,11 @@ class HibahService
         return  $this->hibah->query();
     }
 
+    public function find($id)
+    {
+        return $this->hibah->find($id);
+    }
+
     public function store($data)
     {
         return $this->hibah->create($data);

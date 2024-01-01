@@ -26,7 +26,7 @@
     <div id="appCapsule">
         <!-- Transactions -->
         <div class="section mt-2">
-            <div class="section-title">Detail Permohonan</div>
+            <div class="alert alert-success mb-2">Detail {{ $permohonan->keterangan }}</div>
             <div class="card">
                 <div class="card-body">
                     <form>

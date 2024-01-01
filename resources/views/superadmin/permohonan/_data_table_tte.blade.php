@@ -4,7 +4,7 @@
         <img src="{{ \Illuminate\Support\Facades\Storage::url($tb->user->photo) }}" alt="img" class="image-block imaged w48">
         <div>
             <strong>{{ $tb->user->nama }}</strong>
-            <p>{{ \carbon\carbon::parse($tb->created_at)->isoFormat('D MMMM Y') }}</p>
+            <p>{{ $tb->keterangan }}</p>
         </div>
     </div>
     <div class="right">

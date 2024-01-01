@@ -38,7 +38,9 @@ class Permohonan extends Model
         'lampiran21',
         'status',
         'skt',
-        'pesan'
+        'pesan',
+        'terdafar_at',
+        'keterangan'
     ];
 
     public function user()

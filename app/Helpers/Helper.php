@@ -3,6 +3,12 @@
 use App\Models\Log;
 use Illuminate\Support\Facades\Auth;
 
+function format_angka_indo($angka)
+{
+    $rupiah = number_format($angka, 0, ',', '.');
+    return $rupiah;
+}
+
 if (!function_exists('create')) {
     function create($result)
     {

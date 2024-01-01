@@ -74,6 +74,7 @@ class PermohonanController extends Controller
             $data['skt'] = Storage::putFile('public/dokumen', $request->skt);
         } elseif ($request->status == 'diproses') {
             $data['status'] = 'diproses';
+            $data['keterangan'] = 'Permohonan Surat Keterangan Terdaftar (SKT)';
         } else {
             $data['status'] = 'ditolak';
             $data['pesan'] = $request->pesan;

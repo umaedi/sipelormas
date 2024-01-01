@@ -167,7 +167,8 @@
                   </tr>
                   <tr>
                     <th>10</th>
-                    <td><a href="{{ \Illuminate\Support\Facades\Storage::url($permohonan->lampiran10) }}" target="_blank"> Nomor wajib pajak atas nama ormas</a></td>
+                    <td>
+                      Nomor wajib pajak atas nama ormas: <span class="font-weight-bold">{{ $permohonan->lampiran10 }}</span> 
                   </tr>
                   <tr>
                     <th>11</th>

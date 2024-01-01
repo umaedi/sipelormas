@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Superadmin;
 use App\Http\Controllers\Controller;
 use App\Services\PermohonanService;
 use App\Services\UserService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -20,6 +21,7 @@ class TTEController extends Controller
     {
         if (Hash::check($request->password, Auth::user()->password)) {
             $data['status'] = 'diterima';
+            $data['terdaftar_at'] = Carbon::now()->toDateTimeString();
             try {
                 $this->permohonan->update($id, $data);
             } catch (\Throwable $th) {
