@@ -5,6 +5,7 @@ namespace App\Models;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Permohonan extends Model
 {
@@ -39,7 +40,7 @@ class Permohonan extends Model
         'status',
         'skt',
         'pesan',
-        'terdafar_at',
+        'terdaftar_at',
         'keterangan'
     ];
 
@@ -53,5 +54,10 @@ class Permohonan extends Model
         static::creating(function ($model) {
             $model->id = Uuid::uuid4()->toString();
         });
+    }
+
+    public function hibah()
+    {
+        return $this->hasMany(Hibah::class);
     }
 }

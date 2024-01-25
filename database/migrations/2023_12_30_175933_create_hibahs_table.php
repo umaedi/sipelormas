@@ -16,14 +16,15 @@ return new class extends Migration
         Schema::create('hibahs', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->string('lampiran1');
-            $table->string('lampiran2');
-            $table->string('lampiran3');
-            $table->string('jumlah_hibah');
+            $table->uuid('permohonan_id');
+            $table->string('surat_permohonan_hibah');
+            $table->string('rencana_anggaran');
+            $table->string('fc_norek');
             $table->enum('status', array('dalam antrian', 'diproses', 'diterima', 'ditolak'))->default('dalam antrian');
             $table->string('tgl_acc')->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

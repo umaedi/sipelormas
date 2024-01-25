@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\Superadmin;
 
 use App\Http\Controllers\Controller;
+use App\Services\HibahService;
 use App\Services\PermohonanService;
 use Illuminate\Http\Request;
 
 class PermohonanController extends Controller
 {
     protected $permohonan;
-    public function __construct(PermohonanService $permohonanService)
+    protected $hibah;
+    public function __construct(PermohonanService $permohonanService, HibahService $hibahService)
     {
         $this->permohonan = $permohonanService;
+        $this->hibah = $hibahService;
     }
     public function index()
     {
@@ -26,7 +29,12 @@ class PermohonanController extends Controller
 
     public function show($id)
     {
-        $data['permohonan'] = $this->permohonan->find($id);
+        $permohonan = $this->permohonan->find($id);
+        if (is_null($permohonan)) {
+            $data['permohonan'] = $this->hibah->find($id);
+        } else {
+            $data['permohonan'] = $this->permohonan->find($id);
+        }
         $data['title'] = 'Detail permohonan TTE';
         return view('superadmin.permohonan.show', $data);
     }

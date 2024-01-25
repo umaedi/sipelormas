@@ -23,7 +23,7 @@
 </head>
 <body class="bg-light">
    @include('layouts._navbar')
-   <img data-src="{{ asset('img') }}/hero/banner_kesbangpol-min.png" class="img-fluid lazyload" alt="Responsive image">
+   <img data-src="{{ asset('img') }}/hero/kesbangpol-min.png" class="img-fluid lazyload" alt="Responsive image">
    @yield('content')
    @include('layouts._footer')
 

@@ -26,4 +26,17 @@ class HibahService
     {
         return $this->hibah->create($data);
     }
+
+    public function update($id, $data)
+    {
+        $model = $this->hibah->find($id);
+        $model->update($data);
+        return $model;
+    }
+
+    public function softDelete($id)
+    {
+        $model = $this->hibah->find($id);
+        return $model->delete();
+    }
 }

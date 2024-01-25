@@ -8,9 +8,10 @@ use App\Services\HibahService;
 use App\Services\PermohonanService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class HibahController extends Controller
+class DanahibahController extends Controller
 {
     protected $permohonan;
     protected $hibah;
@@ -29,7 +30,7 @@ class HibahController extends Controller
             return back()->with('msg_ditolak', 'Mohon maaf Anda belum bisa mengajukan dana hibah, dikarenakan permohonan SKT Anda masih ' . $cek_tgl_terdaftar->status);
         } elseif ($cek_tgl_terdaftar->status == 'diproses') {
             return back()->with('msg_ditolak', 'Mohon maaf Anda belum bisa mengajukan dana hibah, dikarenakan permohonan SKT Anda sedang ' . $cek_tgl_terdaftar->status);
-        } elseif ($cek_tgl_terdaftar->status == 'diitolak') {
+        } elseif ($cek_tgl_terdaftar->status == 'ditolak') {
             return back()->with('msg_ditolak', 'Mohon maaf Anda belum bisa mengajukan dana hibah, dikarenakan permohonan SKT Anda ' . $cek_tgl_terdaftar->status);
         }
 
@@ -123,5 +124,67 @@ class HibahController extends Controller
     {
         $data['hibah'] = $this->hibah->find($id);
         return view('hibah.show', $data);
+    }
+
+    public function edit($id)
+    {
+        $data['hibah'] = $this->hibah->find($id);
+        return view('hibah.edit', $data);
+    }
+
+    public function update($id)
+    {
+        $validator = Validator::make(\request()->all(), [
+            'rencana_anggaran'  => 'required|string|max:20',
+            'surat_permohonan_hibah' => 'file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'fc_norek' => 'file|mimes:pdf,jpg,jpeg,png|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->error($validator->errors());
+        }
+
+        $hibah = $this->hibah->find($id);
+        $data = \request()->except('_token');
+
+        if (isset($data['surat_permohonan_hibah'])) {
+            $randomName = Str::random(16);
+            $surat_permohonan_hibah = \request()->file('surat_permohonan_hibah');
+            $newsurat_permohonan_hibah = Str::replace(' ', '_',  strtolower(Auth::user()->nama) . '_surat_permohonan_hibah_' . $randomName . '.' . $surat_permohonan_hibah->getClientOriginalExtension());
+            $data['surat_permohonan_hibah'] = $surat_permohonan_hibah->storeAs('public/lampiran', $newsurat_permohonan_hibah);
+            Storage::delete($hibah->surat_permohonan_hibah);
+        } else {
+            $data['surat_permohonan_hibah'] = $hibah->surat_permohonan_hibah;
+        }
+
+        if (isset($data['fc_norek'])) {
+            $randomName = Str::random(16);
+            $fc_norek = \request()->file('fc_norek');
+            $newfc_norek = Str::replace(' ', '_',  strtolower(Auth::user()->nama) . '_fc_norek_' . $randomName . '.' . $fc_norek->getClientOriginalExtension());
+            $data['fc_norek'] = $fc_norek->storeAs('public/lampiran', $newfc_norek);
+            Storage::delete($hibah->fc_norek);
+        } else {
+            $data['fc_norek'] = $hibah->fc_norek;
+        }
+
+        $data['status'] = 'dalam antrian';
+        $data['rencana_anggaran'] = str_replace('.', '', \request()->rencana_anggaran);
+        try {
+            $this->hibah->update($id, $data);
+        } catch (\Throwable $th) {
+            return $this->error($th->getMessage());
+        }
+
+        return back()->with('msg_success', 'Pengajuan dana hibah berhasil di perbaharui');
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $this->hibah->softDelete($id);
+        } catch (\Throwable $th) {
+            return $this->error($th->getMessage());
+        }
+        return redirect('/user/hibah')->with('msg_success', 'Pengajuan dana hibah berhasil dihapus!');
     }
 }

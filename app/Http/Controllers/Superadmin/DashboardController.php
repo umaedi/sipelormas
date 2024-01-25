@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Superadmin;
 
 use App\Http\Controllers\Controller;
+use App\Services\HibahService;
 use App\Services\PermohonanService;
 use Illuminate\Http\Request;
 
@@ -15,15 +16,17 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public $permohonan;
-    public function __construct(PermohonanService $permohonanService)
+    public $hibah;
+    public function __construct(HibahService $hibahService, PermohonanService $permohonanService)
     {
         $this->permohonan = $permohonanService;
+        $this->hibah = $hibahService;
     }
 
     public function __invoke(Request $request)
     {
         if (\request()->ajax()) {
-            $data['table'] = $this->permohonan->Query()->where('status', 'diproses')->get();
+            $data['table'] = $this->permohonan->Query()->with('hibah')->where('status', 'diproses')->get();
             return view('superadmin.dashboard._data_table', $data);
         }
 

@@ -22,7 +22,7 @@
               </div>
             <div class="card">
             <div class="card-body text-center">
-                <h4>Saat ini Anda belum bisa mengajukan dana hibah</h4>
+                <h4>Saat ini Anda belum bisa mengajukan dana hibah sebelum</h4>
                 <div id="countdown">
 
                 </div>

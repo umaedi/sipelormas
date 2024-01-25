@@ -17,7 +17,7 @@
           </div>
           <div class="row mb-3">
             <div class="col-lg-6 col-md-4 col-sm-6 col-12">
-              <div class="alert alert-primary">Permohonan Surat Keterangan Terdaftar (SKT)</div>
+              <div class="alert alert-warning">Permohonan Surat Keterangan Terdaftar (SKT)</div>
                 <div class="card card-statistic-1 mb-3">
                     <div class="card-icon bg-primary">
                         <i class="fa fa-user fa-2x" style="color: #fff"></i>
@@ -72,17 +72,17 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-4 col-sm-6 col-12">
-              <div class="alert alert-primary">Pengajuan dana hibah</div>
+              <div class="alert alert-warning">Pengajuan dana hibah</div>
                 <div class="card card-statistic-1 mb-3">
                     <div class="card-icon bg-primary">
                         <i class="fa fa-user fa-2x" style="color: #fff"></i>
                     </div>
-                    <a href="/admin/permohonan" style="text-decoration: none">
+                    <a href="/admin/hibah" style="text-decoration: none">
                     <div class="card-wrap">
                         <div class="card-header">
                             <h4>{{ __('Pengajuan perlu diproses') }}</h4>
                         </div>
-                        <div class="card-body text-uppercase">{{ $permohonan }}</div>
+                        <div class="card-body text-uppercase">{{ $hibah }}</div>
                     </div>
                     </a>
                 </div>
@@ -90,12 +90,12 @@
                     <div class="card-icon bg-info">
                         <i class="fa fa-user-clock fa-2x" style="color: #fff"></i>
                     </div>
-                    <a href="/admin/permohonan/diproses" style="text-decoration: none">
+                    <a href="/admin/hibah/diproses" style="text-decoration: none">
                     <div class="card-wrap">
                         <div class="card-header">
                             <h4>{{ __('Pengajuan sedang diproses') }}</h4>
                         </div>
-                        <div class="card-body text-uppercase">{{ $permohonan_diproses }}</div>
+                        <div class="card-body text-uppercase">{{ $hibah_diproses }}</div>
                     </div>
                     </a>
                 </div>
@@ -108,7 +108,7 @@
                         <div class="card-header">
                             <h4>{{ __('Pengajuan diterima') }}</h4>
                         </div>
-                        <div class="card-body text-uppercase">{{ $permohonan_diterima }}</div>
+                        <div class="card-body text-uppercase">{{ $hibah_diterima }}</div>
                     </div>
                     </a>
                 </div>
@@ -121,7 +121,7 @@
                         <div class="card-header">
                             <h4>{{ __('Pengajuan ditolak') }}</h4>
                         </div>
-                        <div class="card-body text-uppercase">{{ $permohonan_ditolak }}</div>
+                        <div class="card-body text-uppercase">{{ $hibah_ditolak }}</div>
                     </div>
                     </a>
                 </div>
@@ -188,7 +188,7 @@
 
     async function loadPermohonan() {
       var param = {
-          url: '/admin/permohonan',
+          url: '/admin/hibah',
           method: 'GET',
           data: {
             load: 'table',

@@ -40,10 +40,13 @@ Route::middleware('auth')->prefix('user')->group(function () {
     Route::put('/permohonan_skt/update/{id}', [PermohonansktController::class, 'update']);
     Route::delete('/permohonan_skt/destroy/{id}', [PermohonansktController::class, 'destroy']);
 
-    Route::get('/hibah', [HibahController::class, 'index']);
-    Route::get('/hibah/create', [HibahController::class, 'create']);
-    Route::post('/hibah/store', [HibahController::class, 'store']);
-    Route::get('/hibah/show/{id}', [HibahController::class, 'show']);
+    Route::get('/hibah', [DanahibahController::class, 'index']);
+    Route::get('/hibah/create', [DanahibahController::class, 'create']);
+    Route::post('/hibah/store', [DanahibahController::class, 'store']);
+    Route::get('/hibah/show/{id}', [DanahibahController::class, 'show']);
+    Route::get('/hibah/edit/{id}', [DanahibahController::class, 'edit']);
+    Route::put('/hibah/update/{id}', [DanahibahController::class, 'update']);
+    Route::delete('/hibah/destroy/{id}', [DanahibahController::class, 'destroy']);
 
     Route::get('/download/{id}', DownloadController::class);
 });
@@ -58,6 +61,14 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/permohonan/ditolak', [Admin\PermohonanController::class, 'ditolak']);
     Route::get('/permohonan/show/{id}', [Admin\PermohonanController::class, 'show']);
     Route::put('/permohonan/update/{id}', [Admin\PermohonanController::class, 'update']);
+
+    Route::get('/hibah', [Admin\HibahController::class, 'index']);
+    Route::get('/hibah/show/{id}', [Admin\HibahController::class, 'show']);
+    Route::get('/hibah/edit/{id}', [Admin\HibahController::class, 'edit']);
+    Route::put('/hibah/update/{id}', [Admin\HibahController::class, 'update']);
+    Route::get('/hibah/destroy/{id}', [Admin\HibahController::class, 'destroy']);
+
+    Route::get('/hibah/diproses', [Admin\StatushibahController::class, 'diproses']);
 
     //route for user
     Route::get('/users', [Admin\UserController::class, 'index']);

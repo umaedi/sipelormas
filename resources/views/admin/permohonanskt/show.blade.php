@@ -57,7 +57,7 @@
                       </form>
                     </div>
                 </div>
-              </div>
+            </div>
           <div class="col-md-8 mb-3">
             <div class="card mb-3">
                 @if ($permohonan->pesan && $permohonan->status == 'dalam antrian')
